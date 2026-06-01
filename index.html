@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Life Mais Saúde — Atendimento pré-hospitalar de excelência. Remoções, cobertura de eventos, área protegida e home care. (19) 3217-8619.">
+  <title>Life Mais Saúde — Atendimento Pré-Hospitalar de Excelência</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Design Tokens ─────────────────────────────── */
+    :root {
+      --red:          #0F766E;
+      --red-dark:     #115E59;
+      --red-light:    #14B8A6;
+      --red-pale:     #F0FDFA;
+      --navy:         #0D1B2A;
+      --navy-mid:     #1A2B3C;
+      --blue:         #1565C0;
+      --blue-light:   #1E88E5;
+      --bg:           #FFFFFF;
+      --bg-alt:       #F8F9FA;
+      --bg-dark:      #0D1B2A;
+      --text:         #0F172A;
+      --text-muted:   #64748B;
+      --border:       #E2E8F0;
+      --r-sm:  8px;
+      --r-md:  12px;
+      --r-lg:  20px;
+      --r-xl:  28px;
+      --r-full:9999px;
+      --sh-sm: 0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+      --sh-md: 0 4px 6px -1px rgba(0,0,0,.10),0 2px 4px -1px rgba(0,0,0,.06);
+      --sh-lg: 0 10px 15px -3px rgba(0,0,0,.10),0 4px 6px -2px rgba(0,0,0,.06);
+      --sh-xl: 0 20px 25px -5px rgba(0,0,0,.14),0 10px 10px -5px rgba(0,0,0,.06);
+      --ease: cubic-bezier(.4,0,.2,1);
+      --dur:  220ms;
+    }
+
+    /* ─── Reset & Base ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    input, select, textarea { font-family: inherit; }
+
+    /* ─── Skip link ──────────────────────────────────── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--red); color: #fff;
+      padding: .5rem 1rem; border-radius: var(--r-sm);
+      font-size: .875rem; font-weight: 600; z-index: 9999;
+      transition: top var(--dur) var(--ease);
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ─── Announcement Bar ───────────────────────────── */
+    .announcement {
+      background: var(--red-dark);
+      color: #fff; text-align: center;
+      padding: .625rem 1rem; font-size: .8125rem; font-weight: 500;
+    }
+    .announcement strong { font-weight: 700; }
+    .announcement a { color: #CCFBF1; text-decoration: underline; }
+
+    /* ─── Navbar ─────────────────────────────────────── */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .navbar.scrolled { border-color: var(--border); box-shadow: var(--sh-sm); }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; gap: 1.5rem;
+      padding: .875rem 1.5rem;
+    }
+    .nav-logo { display: flex; align-items: center; gap: .5rem; flex-shrink: 0; }
+    .nav-logo img { height: 48px; width: auto; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: .125rem; margin-left: auto; }
+    .nav-links a {
+      padding: .5rem .875rem; font-size: .9375rem; font-weight: 500; color: var(--text-muted);
+      border-radius: var(--r-sm);
+      transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .nav-links a:hover { color: var(--red); background: var(--red-pale); }
+    .nav-links a:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+    .nav-urgency {
+      background: var(--red) !important; color: #fff !important;
+      padding: .625rem 1.125rem !important; border-radius: var(--r-full) !important;
+      font-weight: 700 !important; white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(15,118,110,.35);
+      transition: background var(--dur) var(--ease), transform var(--dur) var(--ease) !important;
+    }
+    .nav-urgency:hover { background: var(--red-dark) !important; transform: translateY(-1px); }
+    .nav-hamburger {
+      display: none; align-items: center; justify-content: center;
+      width: 44px; height: 44px; margin-left: auto;
+      border-radius: var(--r-sm); color: var(--text);
+      transition: background var(--dur) var(--ease);
+    }
+    .nav-hamburger:hover { background: var(--bg-alt); }
+    .nav-hamburger svg { width: 22px; height: 22px; }
+    .nav-mobile {
+      display: none; flex-direction: column; gap: .25rem;
+      padding: .75rem 1.5rem 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { padding: .75rem 1rem; font-size: 1rem; font-weight: 500; color: var(--text-muted); border-radius: var(--r-sm); transition: color var(--dur) var(--ease), background var(--dur) var(--ease); }
+    .nav-mobile a:hover { color: var(--red); background: var(--red-pale); }
+    .nav-mobile .nav-urgency { margin-top: .5rem; text-align: center; background: var(--red) !important; color: #fff !important; }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .hero {
+      position: relative; overflow: hidden; min-height: 85dvh;
+      display: flex; align-items: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(100deg, rgba(13,27,42,.88) 0%, rgba(13,27,42,.75) 55%, rgba(13,27,42,.35) 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto; padding: 5rem 1.5rem;
+      width: 100%;
+    }
+    .hero-content { max-width: 640px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(15,118,110,.9); color: #fff;
+      border-radius: var(--r-full); padding: .375rem 1rem;
+      font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #CCFBF1; animation: blink 1.4s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:.3} }
+    .hero h1 {
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: clamp(2.25rem, 5.5vw, 4rem);
+      line-height: 1.1; color: #fff; margin-bottom: 1.25rem;
+    }
+    .hero h1 span { color: #5EEAD4; }
+    .hero-sub {
+      font-size: 1.125rem; color: rgba(255,255,255,.82); line-height: 1.7;
+      margin-bottom: 2rem; max-width: 50ch;
+    }
+    .hero-price {
+      display: inline-flex; align-items: center; gap: .625rem;
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+      border-radius: var(--r-md); padding: .75rem 1.125rem;
+      color: #fff; font-size: 1rem; font-weight: 600;
+      margin-bottom: 2rem; backdrop-filter: blur(8px);
+    }
+    .hero-price strong { color: #CCFBF1; font-size: 1.25rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .btn-red {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--red); color: #fff;
+      padding: .9375rem 2rem; border-radius: var(--r-full);
+      font-size: 1rem; font-weight: 700;
+      box-shadow: 0 4px 16px rgba(15,118,110,.5);
+      transition: background var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+      touch-action: manipulation;
+    }
+    .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,118,110,.55); }
+    .btn-red:focus-visible { outline: 3px solid #CCFBF1; outline-offset: 3px; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.12); color: #fff;
+      padding: .9375rem 2rem; border-radius: var(--r-full);
+      font-size: 1rem; font-weight: 600;
+      border: 2px solid rgba(255,255,255,.45);
+      backdrop-filter: blur(8px);
+      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+      touch-action: manipulation;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.7); transform: translateY(-2px); }
+    .btn-ghost:focus-visible { outline: 3px solid rgba(255,255,255,.6); outline-offset: 3px; }
+    .hero-trust { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .trust-pill {
+      display: flex; align-items: center; gap: .5rem;
+      color: rgba(255,255,255,.8); font-size: .875rem; font-weight: 500;
+    }
+    .trust-pill svg { width: 18px; height: 18px; flex-shrink: 0; color: #5EEAD4; }
+
+    /* ─── Stats ──────────────────────────────────────── */
+    .stats { background: var(--navy); padding: 2.75rem 1.5rem; }
+    .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .stat-item { text-align: center; padding: .5rem; }
+    .stat-num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(2rem, 3.5vw, 2.875rem); color: #fff; display: block; line-height: 1; }
+    .stat-accent { color: #5EEAD4; }
+    .stat-label { font-size: .9rem; color: rgba(255,255,255,.6); margin-top: .375rem; }
+
+    /* ─── Shared Section Styles ──────────────────────── */
+    .section { padding: 5rem 1.5rem; }
+    .section-alt { background: var(--bg-alt); }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--red-pale); color: var(--red);
+      border-radius: var(--r-full); padding: .375rem .875rem;
+      font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      margin-bottom: 1rem;
+    }
+    .section-tag svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; }
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: clamp(1.625rem, 3.5vw, 2.5rem); line-height: 1.2; color: var(--text); margin-bottom: .75rem;
+    }
+    .section-sub { font-size: 1.0625rem; color: var(--text-muted); line-height: 1.7; max-width: 52ch; }
+    .section-header { margin-bottom: 3rem; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 0 auto; }
+    .section-header.centered .section-tag { margin: 0 auto 1rem; }
+
+    /* ─── Services Grid ──────────────────────────────── */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .svc-card {
+      background: #fff; border-radius: var(--r-xl);
+      overflow: hidden; border: 1px solid var(--border);
+      box-shadow: var(--sh-md);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+      display: flex; flex-direction: column;
+    }
+    .svc-card:hover { transform: translateY(-5px); box-shadow: var(--sh-xl); }
+    .svc-img {
+      height: 220px; position: relative; overflow: hidden; flex-shrink: 0;
+    }
+    .svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--ease); }
+    .svc-card:hover .svc-img img { transform: scale(1.04); }
+    .svc-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,27,42,.5) 0%, transparent 60%);
+    }
+    .svc-body { padding: 1.625rem; flex: 1; display: flex; flex-direction: column; }
+    .svc-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.125rem; color: var(--text); margin-bottom: .5rem; }
+    .svc-desc { font-size: .9375rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.25rem; flex: 1; }
+    .svc-cta {
+      display: inline-flex; align-items: center; gap: .375rem;
+      color: var(--red); font-weight: 600; font-size: .9375rem;
+      transition: gap var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .svc-cta:hover { gap: .625rem; color: var(--red-dark); }
+    .svc-cta svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* ─── Features (smaller services) ───────────────── */
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .feat-card {
+      background: #fff; border-radius: var(--r-lg); padding: 1.5rem;
+      border: 1px solid var(--border); box-shadow: var(--sh-sm);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .feat-card:hover { transform: translateY(-3px); box-shadow: var(--sh-lg); border-color: #99F6E4; }
+    .feat-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--red-pale); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .feat-icon svg { width: 24px; height: 24px; fill: none; stroke: var(--red); stroke-width: 2; stroke-linecap: round; }
+    .feat-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: .375rem; }
+    .feat-desc { font-size: .875rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ─── Mission / Quem Somos ───────────────────────── */
+    .mission-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .mission-img-wrap {
+      position: relative; border-radius: var(--r-xl); overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .mission-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .mission-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(13,27,42,.3) 0%, transparent 60%);
+    }
+    .mission-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: var(--red); color: #fff; border-radius: var(--r-md);
+      padding: .875rem 1.25rem;
+    }
+    .mission-badge-val { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.5rem; display: block; }
+    .mission-badge-lbl { font-size: .8125rem; opacity: .85; }
+    .values-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .value-item { display: flex; align-items: flex-start; gap: .875rem; }
+    .value-dot {
+      width: 26px; height: 26px; border-radius: 50%; background: var(--red-pale);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: .125rem;
+    }
+    .value-dot svg { width: 13px; height: 13px; fill: none; stroke: var(--red); stroke-width: 2.5; stroke-linecap: round; }
+    .value-item strong { font-weight: 600; font-size: .9375rem; color: var(--text); display: block; margin-bottom: .2rem; }
+    .value-item span { font-size: .875rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ─── Diferenciados ──────────────────────────────── */
+    .diff-inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; }
+    .diff-img-wrap { border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 5/4; position: relative; }
+    .diff-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .diff-list { display: flex; flex-direction: column; gap: .875rem; margin-top: 1.5rem; }
+    .diff-item { display: flex; align-items: center; gap: .75rem; }
+    .diff-num {
+      width: 32px; height: 32px; border-radius: 50%; background: var(--navy); color: #fff;
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: .875rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .diff-item-text { font-size: .9375rem; color: var(--text-muted); font-weight: 500; }
+    .diff-item-text strong { color: var(--text); font-weight: 600; }
+
+    /* ─── Urgency Strip ──────────────────────────────── */
+    .urgency-strip {
+      background: linear-gradient(90deg, var(--red-dark) 0%, var(--red) 50%, #0D9488 100%);
+      padding: 2.75rem 1.5rem; text-align: center; position: relative; overflow: hidden;
+    }
+    .urgency-strip::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5v30M5 20h30' stroke='white' stroke-opacity='.06' stroke-width='1'/%3E%3C/svg%3E");
+    }
+    .urgency-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .urgency-content {}
+    .urgency-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(1.25rem, 3vw, 2rem); color: #fff; margin-bottom: .375rem; }
+    .urgency-sub { color: rgba(255,255,255,.8); font-size: 1rem; }
+    .urgency-phones { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .urgency-phone {
+      display: flex; align-items: center; gap: .625rem;
+      background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+      border-radius: var(--r-md); padding: .875rem 1.25rem;
+      color: #fff; font-weight: 700; font-size: 1rem;
+      backdrop-filter: blur(8px);
+      transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .urgency-phone:hover { background: rgba(255,255,255,.25); transform: translateY(-2px); }
+    .urgency-phone svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* ─── Contact ────────────────────────────────────── */
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+    .contact-items { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: .875rem; }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--red-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-icon svg { width: 20px; height: 20px; fill: none; stroke: var(--red); stroke-width: 2; stroke-linecap: round; }
+    .contact-lbl { font-size: .8125rem; font-weight: 600; color: var(--text-muted); margin-bottom: .2rem; }
+    .contact-val { font-weight: 600; font-size: .9375rem; color: var(--text); }
+    .contact-form {
+      background: #fff; border-radius: var(--r-xl);
+      padding: 2.5rem; box-shadow: var(--sh-xl); border: 1px solid var(--border);
+    }
+    .form-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.375rem; color: var(--text); margin-bottom: 1.75rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .375rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: .875rem; font-weight: 600; color: var(--text); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: .75rem 1rem; border-radius: var(--r-md);
+      border: 1.5px solid var(--border);
+      font-size: .9375rem; color: var(--text); background: var(--bg); outline: none;
+      transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+      min-height: 48px;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(15,118,110,.12);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .req { color: var(--red); }
+    .form-submit {
+      width: 100%; margin-top: 1.25rem;
+      background: var(--red); color: #fff;
+      padding: .9375rem; border-radius: var(--r-full);
+      font-size: 1rem; font-weight: 700;
+      box-shadow: 0 4px 14px rgba(15,118,110,.35);
+      transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+      touch-action: manipulation;
+    }
+    .form-submit:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .form-submit:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+    .form-note { font-size: .8rem; color: var(--text-muted); text-align: center; margin-top: .875rem; }
+
+    /* ─── Footer ─────────────────────────────────────── */
+    footer { background: var(--bg-dark); color: rgba(255,255,255,.7); padding: 4rem 1.5rem 2rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer-logo-img { height: 52px; width: auto; object-fit: contain; margin-bottom: 1rem; filter: brightness(0) invert(1); }
+    .footer-desc { font-size: .9rem; line-height: 1.7; max-width: 26ch; margin-bottom: 1.5rem; }
+    .footer-contact-list { display: flex; flex-direction: column; gap: .625rem; }
+    .footer-contact-item { display: flex; align-items: center; gap: .5rem; font-size: .875rem; }
+    .footer-contact-item svg { width: 15px; height: 15px; fill: none; stroke: #5EEAD4; stroke-width: 2; stroke-linecap: round; flex-shrink: 0; }
+    .footer-col h4 { font-family: 'Sora', sans-serif; font-weight: 600; font-size: .9375rem; color: #fff; margin-bottom: 1.25rem; }
+    .footer-col ul { display: flex; flex-direction: column; gap: .625rem; }
+    .footer-col ul li a { font-size: .9rem; color: rgba(255,255,255,.6); transition: color var(--dur) var(--ease); }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-top: 2rem; font-size: .85rem; }
+    .footer-bottom-links { display: flex; gap: 1.5rem; }
+    .footer-bottom-links a { color: rgba(255,255,255,.45); transition: color var(--dur) var(--ease); }
+    .footer-bottom-links a:hover { color: #fff; }
+    .footer-reg { color: #5EEAD4; font-weight: 600; }
+
+    /* ─── Scroll Animations ──────────────────────────── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .55s var(--ease), transform .55s var(--ease); }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .stagger > .svc-card:nth-child(1), .stagger > .feat-card:nth-child(1) { transition-delay: 0ms; }
+    .stagger > .svc-card:nth-child(2), .stagger > .feat-card:nth-child(2) { transition-delay: 70ms; }
+    .stagger > .svc-card:nth-child(3), .stagger > .feat-card:nth-child(3) { transition-delay: 140ms; }
+    .stagger > .feat-card:nth-child(4) { transition-delay: 210ms; }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+      * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* ─── Responsive ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .mission-inner, .diff-inner { gap: 3rem; }
+    }
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .mission-inner, .diff-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .urgency-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .section { padding: 3.5rem 1.25rem; }
+      .hero-inner { padding: 3.5rem 1.25rem; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 540px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; }
+      .btn-red, .btn-ghost { width: 100%; justify-content: center; }
+      .urgency-phones { flex-direction: column; }
+      .urgency-phone { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+<!-- Announcement -->
+<div class="announcement" role="alert">
+  🚑 <strong>Urgência 24h:</strong> Ambulância disponível agora mesmo — ligue <strong>(19) 3217-8619</strong> ou <strong>(19) 99238-5046</strong>
+</div>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <nav class="nav-inner" aria-label="Navegação principal">
+    <a href="#" class="nav-logo" aria-label="Life Mais Saúde — Página inicial">
+      <img src="logo.png" alt="Life Mais Saúde" width="160" height="48">
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sobre">Quem Somos</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="tel:+551932178619" class="nav-urgency">🚨 Urgência e Emergência</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+  <div class="nav-mobile" id="mobile-menu" role="navigation" aria-label="Menu mobile">
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Quem Somos</a>
+    <a href="#contato">Contato</a>
+    <a href="tel:+551932178619" class="nav-urgency">🚨 Urgência e Emergência</a>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="images/ea9cea40b6d13a8f1e0ca68e1a343d42.png" alt="" loading="eager">
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          Atendimento Pré-Hospitalar
+        </div>
+        <h1 id="hero-heading">
+          Quando cada segundo<br>
+          <span>faz a diferença</span>
+        </h1>
+        <p class="hero-sub">
+          Serviço de ambulância particular para remoção, eventos e empresas. Atendimento pré-hospitalar com segurança, agilidade e humanização.
+        </p>
+        <div class="hero-price" aria-label="Remoções a partir de R$ 250,00">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Remoções a partir de <strong>R$ 250,00</strong>
+        </div>
+        <div class="hero-actions">
+          <a href="#contato" class="btn-red">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Solicitar Remoção
+          </a>
+          <a href="#servicos" class="btn-ghost">
+            Conhecer Serviços
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <div class="hero-trust" aria-label="Diferenciais">
+          <div class="trust-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Atendimento 24h
+          </div>
+          <div class="trust-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Equipe Multidisciplinar
+          </div>
+          <div class="trust-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Ambulâncias UTI e Convencionais
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats" aria-label="Números da Life Mais Saúde">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-num"><span class="count-num" data-val="10">0</span><span class="stat-accent">+</span></span>
+        <div class="stat-label">Anos de experiência</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num"><span class="count-num" data-val="5000">0</span><span class="stat-accent">+</span></span>
+        <div class="stat-label">Atendimentos realizados</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num"><span class="count-num" data-val="24">0</span><span class="stat-accent">h</span></span>
+        <div class="stat-label">Disponibilidade total</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num"><span class="count-num" data-val="100">0</span><span class="stat-accent">%</span></span>
+        <div class="stat-label">Comprometimento com a vida</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços Principais -->
+  <section class="section section-alt" id="servicos" aria-labelledby="servicos-heading">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-tag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Nossos Serviços
+        </div>
+        <h2 class="section-heading" id="servicos-heading">Soluções completas em saúde pré-hospitalar</h2>
+        <p class="section-sub">Da urgência ao transporte planejado, cobrimos todas as necessidades com equipe especializada e equipamentos de ponta.</p>
+      </div>
+      <div class="services-grid stagger fade-up">
+
+        <article class="svc-card">
+          <div class="svc-img">
+            <img src="images/7a10d8c6ace19c359d674c508f79976f.png" alt="Equipe de atendimento pré-hospitalar" loading="lazy" width="600" height="220">
+            <div class="svc-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="svc-body">
+            <h3 class="svc-title">Atendimento Pré-Hospitalar</h3>
+            <p class="svc-desc">Equipe médica, de enfermagem e socorristas treinados para avaliação, estabilização clínica e encaminhamento hospitalar. Método "stay and play" com pré-diagnóstico imediato.</p>
+            <a href="#contato" class="svc-cta">
+              Solicitar atendimento
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="svc-card">
+          <div class="svc-img">
+            <img src="images/a13aebadeb1efca3c962e1f4c1be6125.png" alt="Cobertura de eventos com ambulância" loading="lazy" width="600" height="220">
+            <div class="svc-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="svc-body">
+            <h3 class="svc-title">Cobertura de Eventos</h3>
+            <p class="svc-desc">Suporte médico para shows, formaturas, congressos, feiras empresariais, jogos de futebol e muito mais. Garantimos a segurança dos seus convidados durante todo o evento.</p>
+            <a href="#contato" class="svc-cta">
+              Contratar cobertura
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="svc-card">
+          <div class="svc-img">
+            <img src="images/57ac5a5f5dbe0022dedb4739466220bc.png" alt="Ambulância para transferência inter-hospitalar" loading="lazy" width="600" height="220">
+            <div class="svc-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="svc-body">
+            <h3 class="svc-title">Transferência Inter-Hospitalar</h3>
+            <p class="svc-desc">Transporte especializado entre hospitais, clínicas e pronto-socorros com ambulâncias UTI ou convencionais. Equipe treinada para pacientes que não podem ser transportados em veículos comuns.</p>
+            <a href="#contato" class="svc-cta">
+              Solicitar transferência
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="svc-card">
+          <div class="svc-img">
+            <img src="images/549e88369ef273a30e000cb17e58069e.png" alt="Home care — Cuidado domiciliar" loading="lazy" width="600" height="220">
+            <div class="svc-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="svc-body">
+            <h3 class="svc-title">Home Care</h3>
+            <p class="svc-desc">Cuidado profissional no conforto do lar. Visitas médicas domiciliares, enfermagem 24h, administração de medicamentos, curativos, sondagens e acompanhamento de pacientes acamados.</p>
+            <a href="#contato" class="svc-cta">
+              Contratar Home Care
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="svc-card">
+          <div class="svc-img">
+            <img src="images/bd62f3c4a5323de13a41befe1f932fde.png" alt="Bombeiro civil e brigadista profissional" loading="lazy" width="600" height="220">
+            <div class="svc-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="svc-body">
+            <h3 class="svc-title">Bombeiro Civil e Brigadista</h3>
+            <p class="svc-desc">Brigadistas profissionais para eventos, empresas, construções e indústrias. Primeiros socorros, evacuação e prevenção de incêndios. Assessoria completa para documentação AVCB.</p>
+            <a href="#contato" class="svc-cta">
+              Contratar brigadista
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="svc-card">
+          <div class="svc-img">
+            <img src="images/501cd6143eb74e44433e8fc1054bb2e2.png" alt="Cursos de capacitação profissional em saúde" loading="lazy" width="600" height="220">
+            <div class="svc-img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="svc-body">
+            <h3 class="svc-title">Cursos de Capacitação</h3>
+            <p class="svc-desc">Formação de qualidade com instrutores experientes. BLS/ALS, Atendimento Pré-Hospitalar, Primeiros Socorros, Prevenção de Incêndios, Bombeiro Civil e Capacitação para Enfermagem.</p>
+            <a href="#contato" class="svc-cta">
+              Ver cursos disponíveis
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features extras -->
+  <section class="section" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-tag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Serviços Diferenciados
+        </div>
+        <h2 class="section-heading" id="features-heading">Vai além do esperado</h2>
+        <p class="section-sub">Criamos planos estratégicos e soluções personalizadas para cada necessidade.</p>
+      </div>
+      <div class="features-grid stagger fade-up">
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3 class="feat-title">Área Protegida</h3>
+          <p class="feat-desc">Sistema de APH com orientação telefônica imediata e deslocamento de ambulâncias em minutos. Encaminhamento hospitalar só quando necessário.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <h3 class="feat-title">Remoção Infantil</h3>
+          <p class="feat-desc">Especializados em remoção de crianças especiais com equipe multidisciplinar para transporte seguro de longa distância e alta complexidade.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          </div>
+          <h3 class="feat-title">Escolta Escolar</h3>
+          <p class="feat-desc">Escolta e passeio assistido para escolas. Suporte médico durante passeios escolares para que crianças e responsáveis fiquem tranquilos.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h3 class="feat-title">Ponto Fixo para Empresas</h3>
+          <p class="feat-desc">Posto fixo de atendimento para empresas, clínicas e condomínios. Parceiros contam com nossa equipe sempre que precisarem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quem Somos / Mission -->
+  <section class="section section-alt" id="sobre" aria-labelledby="sobre-heading">
+    <div class="container">
+      <div class="mission-inner">
+        <div class="fade-up">
+          <div class="mission-img-wrap">
+            <img src="images/e23171f5796376375900324ea0de19fd.png" alt="Equipe Life Mais Saúde em atendimento" loading="lazy" width="700" height="525">
+            <div class="mission-img-overlay" aria-hidden="true"></div>
+            <div class="mission-badge" aria-label="Mais de 10 anos de experiência">
+              <span class="mission-badge-val">10+</span>
+              <span class="mission-badge-lbl">Anos de experiência</span>
+            </div>
+          </div>
+        </div>
+        <div class="fade-up">
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Nossa Missão
+          </div>
+          <h2 class="section-heading" id="sobre-heading">Conheça um novo conceito em remoções médicas</h2>
+          <p class="section-sub">Garantir um atendimento pré-hospitalar de excelência, oferecendo serviços de remoção e suporte médico com segurança, agilidade e humanização. Nosso compromisso é proporcionar cuidado e bem-estar aos pacientes, atendendo com profissionalismo e empatia em cada momento de necessidade.</p>
+          <ul class="values-list" role="list" aria-label="Nossos valores">
+            <li class="value-item">
+              <div class="value-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div>
+                <strong>Compromisso com a Vida</strong>
+                <span>Atuamos com dedicação e responsabilidade, priorizando sempre o bem-estar e a segurança dos nossos pacientes.</span>
+              </div>
+            </li>
+            <li class="value-item">
+              <div class="value-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div>
+                <strong>Excelência no Atendimento</strong>
+                <span>Equipe qualificada e tecnologia avançada para oferecer um serviço ágil e eficiente em cada chamado.</span>
+              </div>
+            </li>
+            <li class="value-item">
+              <div class="value-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div>
+                <strong>Humanização</strong>
+                <span>Cada atendimento é realizado com respeito, empatia e acolhimento, garantindo conforto ao paciente e seus familiares.</span>
+              </div>
+            </li>
+            <li class="value-item">
+              <div class="value-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div>
+                <strong>Ética e Transparência</strong>
+                <span>Agimos com integridade e honestidade, prezando por relações de confiança com nossos clientes e parceiros.</span>
+              </div>
+            </li>
+            <li class="value-item">
+              <div class="value-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div>
+                <strong>Inovação e Evolução</strong>
+                <span>Investimos constantemente em capacitação profissional e novas tecnologias para um atendimento cada vez melhor.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diferenciais empresariais -->
+  <section class="section" aria-labelledby="diff-heading">
+    <div class="container">
+      <div class="diff-inner">
+        <div class="fade-up">
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Para Empresas e Agências
+          </div>
+          <h2 class="section-heading" id="diff-heading">Planos estratégicos para parceiros</h2>
+          <p class="section-sub">Criamos soluções para agências de eventos, hotéis, resorts e empresas, garantindo atendimento preferencial e suporte contínuo.</p>
+          <ul class="diff-list" role="list" aria-label="Benefícios para parceiros">
+            <li class="diff-item">
+              <div class="diff-num" aria-hidden="true">1</div>
+              <div class="diff-item-text"><strong>Cobertura de propostas</strong> — analisamos e cobrimos propostas concorrentes sempre que possível.</div>
+            </li>
+            <li class="diff-item">
+              <div class="diff-num" aria-hidden="true">2</div>
+              <div class="diff-item-text"><strong>Pacotes de fidelização</strong> — parceria sólida com condições especiais e suporte contínuo.</div>
+            </li>
+            <li class="diff-item">
+              <div class="diff-num" aria-hidden="true">3</div>
+              <div class="diff-item-text"><strong>Atendimento personalizado</strong> — soluções sob medida de acordo com a demanda de cada evento ou empresa.</div>
+            </li>
+            <li class="diff-item">
+              <div class="diff-num" aria-hidden="true">4</div>
+              <div class="diff-item-text"><strong>Histórico de saúde eletrônico</strong> — maior segurança, agilidade e sucesso em cada atendimento para clientes cadastrados.</div>
+            </li>
+          </ul>
+          <div style="margin-top:2rem">
+            <a href="#contato" class="btn-red" style="display:inline-flex">
+              Fale com nossa equipe comercial
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="margin-left:.375rem"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="diff-img-wrap fade-up">
+          <img src="images/ecfcd9a2fd24e279f8564d4c9f8f3ce1.png" alt="Parceiros corporativos Life Mais Saúde" loading="lazy" width="600" height="480">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Urgency Strip -->
+  <div class="urgency-strip" role="complementary" aria-labelledby="urgency-heading">
+    <div class="urgency-inner">
+      <div class="urgency-content">
+        <h2 class="urgency-title" id="urgency-heading">Urgência e Emergência 24 horas</h2>
+        <p class="urgency-sub">Nossa equipe está pronta para atender você agora mesmo.</p>
+      </div>
+      <div class="urgency-phones" role="list" aria-label="Telefones de emergência">
+        <a href="tel:+551932178619" class="urgency-phone" role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (19) 3217-8619
+        </a>
+        <a href="tel:+5519992385046" class="urgency-phone" role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (19) 99238-5046
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contato -->
+  <section class="section" id="contato" aria-labelledby="contato-heading">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="fade-up">
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg>
+            Fale Conosco
+          </div>
+          <h2 class="section-heading" id="contato-heading">Entre em contato</h2>
+          <p class="section-sub">Nossa equipe está pronta para atender você, tirar dúvidas e enviar uma proposta personalizada.</p>
+          <div class="contact-items" role="list">
+            <div class="contact-item" role="listitem">
+              <div class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact-lbl">Telefone / WhatsApp</div>
+                <div class="contact-val">(19) 3217-8619 | (19) 99238-5046</div>
+              </div>
+            </div>
+            <div class="contact-item" role="listitem">
+              <div class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-lbl">E-mail</div>
+                <div class="contact-val">contato@lifemaissaude.com</div>
+              </div>
+            </div>
+            <div class="contact-item" role="listitem">
+              <div class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="contact-lbl">Atendimento</div>
+                <div class="contact-val">24 horas — 7 dias por semana</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form fade-up" role="complementary" aria-label="Formulário de contato">
+          <h3 class="form-title">Solicite uma proposta</h3>
+          <form action="#" method="post" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nome">Nome completo <span class="req" aria-label="obrigatório">*</span></label>
+                <input type="text" id="nome" name="nome" autocomplete="name" required placeholder="Seu nome" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="tel">Telefone / WhatsApp <span class="req" aria-label="obrigatório">*</span></label>
+                <input type="tel" id="tel" name="tel" autocomplete="tel" required placeholder="(19) 00000-0000" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="seu@email.com">
+              </div>
+              <div class="form-group">
+                <label for="servico">Serviço de interesse</label>
+                <select id="servico" name="servico">
+                  <option value="">Selecione...</option>
+                  <option>Atendimento Pré-Hospitalar</option>
+                  <option>Cobertura de Eventos</option>
+                  <option>Transferência Inter-Hospitalar</option>
+                  <option>Home Care</option>
+                  <option>Área Protegida</option>
+                  <option>Bombeiro Civil / Brigadista</option>
+                  <option>Cursos de Capacitação</option>
+                  <option>Ponto Fixo para Empresa</option>
+                  <option>AVCB / Documentação</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label for="msg">Mensagem</label>
+                <textarea id="msg" name="msg" placeholder="Descreva sua necessidade ou dúvida..."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="form-submit">Enviar Solicitação</button>
+            <p class="form-note">Seus dados estão protegidos pela LGPD. Não enviamos spam.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer aria-label="Rodapé">
+  <div class="footer-inner">
+    <div>
+      <img src="logo.png" alt="Life Mais Saúde" class="footer-logo-img" width="160" height="52">
+      <p class="footer-desc">Atendimento pré-hospitalar de excelência. Segurança, agilidade e humanização em cada chamado.</p>
+      <div class="footer-contact-list" aria-label="Contatos">
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>(19) 3217-8619 | (19) 99238-5046</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>contato@lifemaissaude.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Serviços</h4>
+      <ul role="list">
+        <li><a href="#servicos">Atendimento Pré-Hospitalar</a></li>
+        <li><a href="#servicos">Cobertura de Eventos</a></li>
+        <li><a href="#servicos">Transferência Inter-Hospitalar</a></li>
+        <li><a href="#servicos">Home Care</a></li>
+        <li><a href="#servicos">Bombeiro Civil</a></li>
+        <li><a href="#servicos">Cursos de Capacitação</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul role="list">
+        <li><a href="#sobre">Quem Somos</a></li>
+        <li><a href="#sobre">Nossa Missão</a></li>
+        <li><a href="#sobre">Valores</a></li>
+        <li><a href="#contato">Trabalhe Conosco</a></li>
+        <li><a href="#contato">Seja Parceiro</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Especialidades</h4>
+      <ul role="list">
+        <li><a href="#servicos">Área Protegida</a></li>
+        <li><a href="#servicos">Remoção Infantil</a></li>
+        <li><a href="#servicos">Escolta Escolar</a></li>
+        <li><a href="#servicos">Ponto Fixo Empresas</a></li>
+        <li><a href="#servicos">AVCB / Documentação</a></li>
+        <li><a href="#contato">Planos para Clínicas</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Life Mais Saúde. Todos os direitos reservados. <span class="footer-reg">Urgência 24h: (19) 99238-5046</span></span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacidade</a>
+      <a href="#">Termos de Uso</a>
+      <a href="#">LGPD</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+  // Mobile menu
+  const btn = document.getElementById('hamburger-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Scroll animations
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      el.classList.add('visible');
+      if (el.classList.contains('stagger')) {
+        el.querySelectorAll('.svc-card,.feat-card').forEach((c, i) => setTimeout(() => c.classList.add('visible'), i * 75));
+      }
+      io.unobserve(el);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+  document.querySelectorAll('.stagger').forEach(el => {
+    el.querySelectorAll('.svc-card,.feat-card').forEach(c => c.classList.add('fade-up'));
+    io.observe(el);
+  });
+
+  // Counter animation
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.val);
+      const dur = 1600;
+      const start = performance.now();
+      const tick = now => {
+        const p = Math.min((now - start) / dur, 1);
+        const val = Math.round((1 - Math.pow(1 - p, 3)) * target);
+        el.textContent = val.toLocaleString('pt-BR');
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      e.target._counted = true;
+    });
+  }, { threshold: .5 }).observe = (function(orig) {
+    return function(el) { if (!el._counted) orig.call(this, el); };
+  })(IntersectionObserver.prototype.observe);
+
+  // Simpler counter setup
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting || e.target._done) return;
+      e.target._done = true;
+      const target = parseInt(e.target.dataset.val);
+      const dur = 1600;
+      const start = performance.now();
+      const tick = now => {
+        const p = Math.min((now - start) / dur, 1);
+        e.target.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target).toLocaleString('pt-BR');
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: .5 });
+  document.querySelectorAll('.count-num').forEach(el => counterObs.observe(el));
+
+  // Form submit feedback
+  const form = document.querySelector('form');
+  if (form) form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn2 = form.querySelector('.form-submit');
+    btn2.textContent = 'Enviando...'; btn2.disabled = true; btn2.style.opacity = '.7';
+    setTimeout(() => {
+      btn2.textContent = '✓ Solicitação enviada! Entraremos em contato em breve.';
+      btn2.style.background = '#115E59'; btn2.style.opacity = '1';
+    }, 1400);
+  });
+</script>
+</body>
+</html>
