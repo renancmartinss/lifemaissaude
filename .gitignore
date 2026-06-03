@@ -1,0 +1,7 @@
+# Imagens originais sem otimização — não subir (pesadas, só backup local)
+images/_originais/
+
+# Notas internas de trabalho
+textos life mais saude.txt
+images/alterações.txt
+images/altera*.txt
