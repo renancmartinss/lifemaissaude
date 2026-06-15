@@ -1,20 +1,41 @@
 # Life Mais Saúde
 
-> Ambulância particular e atendimento pré-hospitalar 24 horas em São Paulo, Campinas e região. Mais de 10 anos de experiência, equipe multidisciplinar e ambulâncias UTI e convencionais.
+> Ambulância particular e atendimento pré-hospitalar 24 horas em São Paulo, Campinas e região. Mais de 15 anos de experiência (fundada em 2010), CNPJ 11.671.839/0001-78, CNES 5755700. RT Médico: Dr. João Victor Cordeiro Mergulhão, CRM-SP 249208. RT Enfermagem: Ricardo Vieira da Silva, COREN-SP 506543.
 
 ## Serviços
-- **Atendimento Pré-Hospitalar**: avaliação, estabilização clínica e encaminhamento hospitalar com equipe médica, enfermagem e socorristas.
-- **Cobertura de Eventos**: suporte médico para shows, formaturas, congressos, feiras, jogos e grandes públicos. Especialização e referência na região.
-- **Transferência Inter-Hospitalar**: transporte entre hospitais e clínicas em ambulâncias UTI ou convencionais.
-- **Home Care**: cuidado domiciliar, enfermagem 24h, curativos, sondagens e acompanhamento de pacientes acamados.
-- **Bombeiro Civil e Brigadista**: brigadistas para eventos, empresas e indústrias; prevenção de incêndios e assessoria AVCB.
-- **Cursos de Capacitação**: BLS/ALS, primeiros socorros, APH e bombeiro civil.
+
+- **Atendimento Pré-Hospitalar**: avaliação, estabilização clínica e encaminhamento hospitalar com equipe médica, enfermagem e socorristas. Protocolos PHTLS/ATLS. Página: https://lifemaissaude.com/atendimento-pre-hospitalar.html
+- **Cobertura de Eventos**: suporte médico para shows, formaturas, congressos, feiras, jogos e grandes públicos. Especialização e referência na região. Página: https://lifemaissaude.com/cobertura-de-eventos.html
+- **Transferência Inter-Hospitalar**: transporte entre hospitais e clínicas em ambulâncias UTI (Tipo D) ou convencionais (Tipo B), com monitorização contínua. Página: https://lifemaissaude.com/transferencia-inter-hospitalar.html
+- **Home Care**: cuidado domiciliar, enfermagem 24h, curativos, sondagens, visitas médicas e acompanhamento de pacientes acamados. Página: https://lifemaissaude.com/home-care.html
+- **Bombeiro Civil e Brigadista**: brigadistas para eventos, empresas e indústrias; prevenção de incêndios e assessoria AVCB. Página: https://lifemaissaude.com/bombeiro-civil-brigadista.html
+- **Cursos de Capacitação**: BLS/ALS, primeiros socorros, APH, bombeiro civil, brigada de incêndio. Página: https://lifemaissaude.com/cursos-capacitacao.html
 - **Remoções a partir de R$ 250,00**.
 
 ## Área de atendimento
-São Paulo, Campinas e toda a Região Metropolitana de Campinas.
+
+Campinas, São Paulo e toda a Região Metropolitana de Campinas, incluindo:
+- Campinas (sede — Jardim Guarani): https://lifemaissaude.com/ambulancia-campinas.html
+- São Paulo (capital e Grande SP): https://lifemaissaude.com/ambulancia-sao-paulo.html
+- Vinhedo: https://lifemaissaude.com/ambulancia-vinhedo.html
+- Valinhos: https://lifemaissaude.com/ambulancia-valinhos.html
+- Jundiaí: https://lifemaissaude.com/ambulancia-jundiai.html
+- Paulínia: https://lifemaissaude.com/ambulancia-paulinia.html
+- Jaguariúna: https://lifemaissaude.com/ambulancia-jaguariuna.html
+- Indaiatuba: https://lifemaissaude.com/ambulancia-indaiatuba.html
+
+## Endereço
+
+Av. Guarani, 603 — Jardim Guarani, Campinas - SP, 13100-211
 
 ## Contato
+
 - Telefone/WhatsApp 24h: (19) 3217-8619 e (19) 99238-5046
 - E-mail: contato@lifemaissaude.com
 - Site: https://lifemaissaude.com/
+
+## Páginas institucionais
+
+- Política de Privacidade: https://lifemaissaude.com/privacidade.html
+- Termos de Uso: https://lifemaissaude.com/termos.html
+- LGPD: https://lifemaissaude.com/lgpd.html

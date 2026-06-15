@@ -5,3 +5,7 @@ images/_originais/
 textos life mais saude.txt
 images/alterações.txt
 images/altera*.txt
+
+# Arquivos pesados / não pertencem ao site (só backup local)
+*.zip
+documentações.pdf

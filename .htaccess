@@ -1,0 +1,12 @@
+Options -MultiViews
+RewriteEngine On
+
+# 301: /pagina.html → /pagina  (evita conteúdo duplicado no Google)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
+# Serve /pagina internamente como /pagina.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [NC,L]
