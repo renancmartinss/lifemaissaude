@@ -1,12 +1,77 @@
 Options -MultiViews
 RewriteEngine On
 
-# 301: /pagina.html → /pagina  (evita conteúdo duplicado no Google)
+# === Canônico: força HTTPS e remove www (301) ===
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://lifemaissaude.com/$1 [R=301,L]
+
+# 301: /pagina.html -> /pagina  (evita conteúdo duplicado no Google)
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^ /%1 [NC,L,R=301]
 
-# Serve /pagina internamente como /pagina.html
+# === 301: URLs antigas (raiz) -> novas pastas  (migração jun/2026) ===
+RewriteRule ^atendimento-pre-hospitalar/?$ /servicos/atendimento-pre-hospitalar [R=301,L]
+RewriteRule ^cobertura-de-eventos/?$ /servicos/cobertura-de-eventos [R=301,L]
+RewriteRule ^transferencia-inter-hospitalar/?$ /servicos/transferencia-inter-hospitalar [R=301,L]
+RewriteRule ^home-care/?$ /servicos/home-care [R=301,L]
+RewriteRule ^bombeiro-civil-brigadista/?$ /servicos/bombeiro-civil-brigadista [R=301,L]
+RewriteRule ^cursos-capacitacao/?$ /servicos/cursos-capacitacao [R=301,L]
+RewriteRule ^ambulancia-uti/?$ /servicos/ambulancia-uti [R=301,L]
+RewriteRule ^ambulancia-particular-campinas/?$ /servicos/ambulancia-particular-campinas [R=301,L]
+RewriteRule ^locacao-de-ambulancia/?$ /servicos/locacao-de-ambulancia [R=301,L]
+RewriteRule ^ambulancia-campinas/?$ /cidades/ambulancia-campinas [R=301,L]
+RewriteRule ^ambulancia-sao-paulo/?$ /cidades/ambulancia-sao-paulo [R=301,L]
+RewriteRule ^ambulancia-vinhedo/?$ /cidades/ambulancia-vinhedo [R=301,L]
+RewriteRule ^ambulancia-valinhos/?$ /cidades/ambulancia-valinhos [R=301,L]
+RewriteRule ^ambulancia-jundiai/?$ /cidades/ambulancia-jundiai [R=301,L]
+RewriteRule ^ambulancia-paulinia/?$ /cidades/ambulancia-paulinia [R=301,L]
+RewriteRule ^ambulancia-jaguariuna/?$ /cidades/ambulancia-jaguariuna [R=301,L]
+RewriteRule ^ambulancia-indaiatuba/?$ /cidades/ambulancia-indaiatuba [R=301,L]
+RewriteRule ^ambulancia-hortolandia/?$ /cidades/ambulancia-hortolandia [R=301,L]
+RewriteRule ^ambulancia-sumare/?$ /cidades/ambulancia-sumare [R=301,L]
+RewriteRule ^ambulancia-americana/?$ /cidades/ambulancia-americana [R=301,L]
+RewriteRule ^ambulancia-para-shows/?$ /eventos/ambulancia-para-shows [R=301,L]
+RewriteRule ^ambulancia-para-formaturas/?$ /eventos/ambulancia-para-formaturas [R=301,L]
+RewriteRule ^ambulancia-para-casamento/?$ /eventos/ambulancia-para-casamento [R=301,L]
+RewriteRule ^ambulancia-eventos-corporativos/?$ /eventos/ambulancia-eventos-corporativos [R=301,L]
+RewriteRule ^ambulancia-eventos-esportivos/?$ /eventos/ambulancia-eventos-esportivos [R=301,L]
+RewriteRule ^privacidade/?$ /institucional/privacidade [R=301,L]
+RewriteRule ^termos/?$ /institucional/termos [R=301,L]
+RewriteRule ^lgpd/?$ /institucional/lgpd [R=301,L]
+
+# Serve /pagina internamente como /pagina.html (funciona em subpastas também)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+?)/?$ $1.html [NC,L]
+
+# === Compressão gzip (HTML/CSS/JS/JSON/XML/SVG) ===
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/x-javascript application/json application/xml application/rss+xml image/svg+xml
+</IfModule>
+
+# === Cache de navegador ===
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType image/x-icon "access plus 6 months"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# === Headers de segurança ===
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  # HTML sempre revalida no servidor (conteúdo pode mudar a qualquer deploy)
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

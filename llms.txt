@@ -4,25 +4,41 @@
 
 ## Serviços
 
-- **Atendimento Pré-Hospitalar**: avaliação, estabilização clínica e encaminhamento hospitalar com equipe médica, enfermagem e socorristas. Protocolos PHTLS/ATLS. Página: https://lifemaissaude.com/atendimento-pre-hospitalar.html
-- **Cobertura de Eventos**: suporte médico para shows, formaturas, congressos, feiras, jogos e grandes públicos. Especialização e referência na região. Página: https://lifemaissaude.com/cobertura-de-eventos.html
-- **Transferência Inter-Hospitalar**: transporte entre hospitais e clínicas em ambulâncias UTI (Tipo D) ou convencionais (Tipo B), com monitorização contínua. Página: https://lifemaissaude.com/transferencia-inter-hospitalar.html
-- **Home Care**: cuidado domiciliar, enfermagem 24h, curativos, sondagens, visitas médicas e acompanhamento de pacientes acamados. Página: https://lifemaissaude.com/home-care.html
-- **Bombeiro Civil e Brigadista**: brigadistas para eventos, empresas e indústrias; prevenção de incêndios e assessoria AVCB. Página: https://lifemaissaude.com/bombeiro-civil-brigadista.html
-- **Cursos de Capacitação**: BLS/ALS, primeiros socorros, APH, bombeiro civil, brigada de incêndio. Página: https://lifemaissaude.com/cursos-capacitacao.html
+- **Atendimento Pré-Hospitalar**: avaliação, estabilização clínica e encaminhamento hospitalar com equipe médica, enfermagem e socorristas. Protocolos PHTLS/ATLS. Página: https://lifemaissaude.com/servicos/atendimento-pre-hospitalar
+- **Cobertura de Eventos**: suporte médico para shows, formaturas, congressos, feiras, jogos e grandes públicos. Especialização e referência na região. Página: https://lifemaissaude.com/servicos/cobertura-de-eventos
+- **Transferência Inter-Hospitalar**: transporte entre hospitais e clínicas em ambulâncias UTI (Tipo D) ou convencionais (Tipo B), com monitorização contínua. Página: https://lifemaissaude.com/servicos/transferencia-inter-hospitalar
+- **Home Care**: cuidado domiciliar, enfermagem 24h, curativos, sondagens, visitas médicas e acompanhamento de pacientes acamados. Página: https://lifemaissaude.com/servicos/home-care
+- **Bombeiro Civil e Brigadista**: brigadistas para eventos, empresas e indústrias; prevenção de incêndios e assessoria AVCB. Página: https://lifemaissaude.com/servicos/bombeiro-civil-brigadista
+- **Cursos de Capacitação**: BLS/ALS, primeiros socorros, APH, bombeiro civil, brigada de incêndio. Página: https://lifemaissaude.com/servicos/cursos-capacitacao
+- **Ambulância UTI (UTI móvel, Tipo D)**: transporte de pacientes graves com médico, enfermeiro e equipamentos de terapia intensiva. Página: https://lifemaissaude.com/servicos/ambulancia-uti
+- **Ambulância Particular em Campinas**: remoções, transferências e urgências 24h, a partir de R$ 250. Página: https://lifemaissaude.com/servicos/ambulancia-particular-campinas
+- **Ambulância para Empresas, Obras e Indústrias**: ambulância de plantão dentro da operação do cliente, com equipe embarcada, para canteiro de obra, indústria, evento corporativo e contrato mensal de plantão. Inclui visita técnica, dimensionamento junto ao SESMT e relatório de ocorrências. Modalidades: plantão fixo, sob demanda e evento pontual. Página: https://lifemaissaude.com/servicos/ambulancia-para-empresas
+- **Locação de Ambulância**: quando a necessidade é a viatura em si — standby, ponto fixo e UTI móvel, com ou sem equipe. Página: https://lifemaissaude.com/servicos/locacao-de-ambulancia
+- **Cobertura por tipo de evento**: shows (https://lifemaissaude.com/eventos/ambulancia-para-shows), formaturas (https://lifemaissaude.com/eventos/ambulancia-para-formaturas), casamentos (https://lifemaissaude.com/eventos/ambulancia-para-casamento), eventos corporativos (https://lifemaissaude.com/eventos/ambulancia-eventos-corporativos) e eventos esportivos (https://lifemaissaude.com/eventos/ambulancia-eventos-esportivos).
 - **Remoções a partir de R$ 250,00**.
 
 ## Área de atendimento
 
 Campinas, São Paulo e toda a Região Metropolitana de Campinas, incluindo:
-- Campinas (sede — Jardim Guarani): https://lifemaissaude.com/ambulancia-campinas.html
-- São Paulo (capital e Grande SP): https://lifemaissaude.com/ambulancia-sao-paulo.html
-- Vinhedo: https://lifemaissaude.com/ambulancia-vinhedo.html
-- Valinhos: https://lifemaissaude.com/ambulancia-valinhos.html
-- Jundiaí: https://lifemaissaude.com/ambulancia-jundiai.html
-- Paulínia: https://lifemaissaude.com/ambulancia-paulinia.html
-- Jaguariúna: https://lifemaissaude.com/ambulancia-jaguariuna.html
-- Indaiatuba: https://lifemaissaude.com/ambulancia-indaiatuba.html
+- Campinas (sede — Jardim Guarani): https://lifemaissaude.com/cidades/ambulancia-campinas
+- São Paulo (capital e Grande SP): https://lifemaissaude.com/cidades/ambulancia-sao-paulo
+- Vinhedo: https://lifemaissaude.com/cidades/ambulancia-vinhedo
+- Valinhos: https://lifemaissaude.com/cidades/ambulancia-valinhos
+- Jundiaí: https://lifemaissaude.com/cidades/ambulancia-jundiai
+- Paulínia: https://lifemaissaude.com/cidades/ambulancia-paulinia
+- Jaguariúna: https://lifemaissaude.com/cidades/ambulancia-jaguariuna
+- Indaiatuba: https://lifemaissaude.com/cidades/ambulancia-indaiatuba
+- Hortolândia: https://lifemaissaude.com/cidades/ambulancia-hortolandia
+- Sumaré: https://lifemaissaude.com/cidades/ambulancia-sumare
+- Americana: https://lifemaissaude.com/cidades/ambulancia-americana
+
+## Blog
+
+Guias sobre ambulância e eventos:
+- Ambulância para eventos: guia completo: https://lifemaissaude.com/blog/ambulancia-para-eventos-guia
+- É obrigatório ter ambulância em eventos?: https://lifemaissaude.com/blog/e-obrigatorio-ambulancia-em-eventos
+- Remoção de pacientes: guia completo: https://lifemaissaude.com/blog/remocao-de-pacientes-guia
+- Ambulância UTI: o que é e quando usar: https://lifemaissaude.com/blog/ambulancia-uti-o-que-e
 
 ## Endereço
 
@@ -36,6 +52,6 @@ Av. Guarani, 603 — Jardim Guarani, Campinas - SP, 13100-211
 
 ## Páginas institucionais
 
-- Política de Privacidade: https://lifemaissaude.com/privacidade.html
-- Termos de Uso: https://lifemaissaude.com/termos.html
-- LGPD: https://lifemaissaude.com/lgpd.html
+- Política de Privacidade: https://lifemaissaude.com/institucional/privacidade
+- Termos de Uso: https://lifemaissaude.com/institucional/termos
+- LGPD: https://lifemaissaude.com/institucional/lgpd

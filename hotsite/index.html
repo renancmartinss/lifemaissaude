@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0F766E">
+<meta name="description" content="Life Mais Saúde — Ambulância e atendimento pré-hospitalar 24h em Campinas e região.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://lifemaissaude.com/">
+<title>Life Mais Saúde — Cartão Digital</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- =====================================================================
+     CARTÃO DIGITAL NFC — LIFE MAIS SAÚDE (tema claro)
+     Edite somente o objeto CONFIG (antes de </body>).
+     ===================================================================== -->
+
+<style>
+  :root{
+    --brand:        #0F766E;
+    --brand-2:      #14B8A6;
+    --brand-soft:   rgba(15,118,110,.10);
+
+    --bg:           #F6F8F8;
+    --bg-2:         #ffffff;
+    --card:         #ffffff;
+    --card-line:    #e6ebea;
+    --card-line-2:  #d3dbda;
+    --ink:          #0e1b1a;
+    --ink-soft:     #5a6664;
+    --ink-faint:    #95a09e;
+
+    --sh-sm: 0 1px 2px rgba(13,40,38,.06), 0 1px 3px rgba(13,40,38,.05);
+    --sh-md: 0 6px 16px -6px rgba(13,40,38,.14), 0 2px 6px -2px rgba(13,40,38,.06);
+    --sh-lg: 0 20px 40px -14px rgba(13,40,38,.22);
+
+    --r-sm: 14px;
+    --r-md: 20px;
+    --r-lg: 26px;
+    --r-full: 999px;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Instrument Sans',system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.5;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100dvh;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(120% 55% at 50% -10%, var(--brand-soft) 0%, transparent 60%);
+  }
+
+  .wrap{
+    position:relative;z-index:1;max-width:480px;margin:0 auto;
+    padding:0 18px 40px;padding-bottom:max(40px,env(safe-area-inset-bottom));
+  }
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  ul{list-style:none}
+
+  .reveal{opacity:0;transform:translateY(16px);animation:rise .7s var(--ease) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}}
+
+  /* HERO */
+  .hero{position:relative;margin:0 -18px 0}
+  .hero-cover{position:relative;height:198px;overflow:hidden;border-bottom-left-radius:var(--r-lg);border-bottom-right-radius:var(--r-lg)}
+  .hero-cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,30,28,.10) 0%,rgba(8,30,28,.30) 55%,var(--bg) 100%)}
+
+  .id{position:relative;margin-top:-54px;padding:0 6px;text-align:center}
+  .logo{
+    width:104px;height:104px;border-radius:28px;margin:0 auto 14px;
+    background:var(--bg-2);border:1px solid var(--card-line);
+    box-shadow:var(--sh-lg), 0 0 0 5px var(--bg);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+  }
+  .logo img{width:100%;height:100%;object-fit:contain;padding:12px}
+  .logo span{font-family:'Bricolage Grotesque';font-weight:800;font-size:2.4rem;color:var(--brand)}
+
+  .biz-name{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.85rem;letter-spacing:-.02em;line-height:1.1}
+  .biz-cat{margin-top:5px;color:var(--brand);font-weight:600;font-size:.9rem}
+  .biz-tag{margin:9px auto 0;max-width:340px;color:var(--ink-soft);font-size:.95rem}
+
+  .status{
+    display:inline-flex;align-items:center;gap:7px;margin-top:14px;
+    padding:6px 13px;border-radius:var(--r-full);font-size:.8rem;font-weight:600;
+    background:var(--card);border:1px solid var(--card-line);box-shadow:var(--sh-sm);
+  }
+  .status .dot{width:8px;height:8px;border-radius:50%}
+  .status.open .dot{background:#10b981;box-shadow:0 0 0 0 rgba(16,185,129,.5);animation:pulse 2.2s infinite}
+  .status.closed .dot{background:#f43f5e}
+  .status .label{color:var(--ink)}
+  .status .sub{color:var(--ink-faint);font-weight:500}
+  @keyframes pulse{70%{box-shadow:0 0 0 7px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+
+  section{margin-top:26px}
+  .eyebrow{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;padding-left:2px}
+  .eyebrow svg{width:15px;height:15px;color:var(--brand)}
+
+  /* AÇÕES RÁPIDAS */
+  .quick{display:grid;gap:10px}
+  .quick a{
+    display:flex;flex-direction:column;align-items:center;gap:8px;padding:15px 6px;
+    border-radius:var(--r-md);background:var(--card);border:1px solid var(--card-line);box-shadow:var(--sh-sm);
+    transition:transform .2s var(--ease),box-shadow .2s var(--ease);
+  }
+  .quick a:active{transform:scale(.94)}
+  @media(hover:hover){.quick a:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}}
+  .quick .ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--brand-soft);color:var(--brand)}
+  .quick .ic svg{width:23px;height:23px}
+  .quick span{font-size:.74rem;font-weight:600;color:var(--ink-soft)}
+  /* destaque urgência */
+  .quick a.urgent{background:var(--brand);border-color:var(--brand)}
+  .quick a.urgent .ic{background:rgba(255,255,255,.2);color:#fff}
+  .quick a.urgent span{color:#fff}
+
+  /* AVALIAÇÃO */
+  .review{position:relative;overflow:hidden;border-radius:var(--r-lg);padding:22px;background:linear-gradient(150deg,var(--brand) 0%,var(--brand-2) 100%);color:#fff;box-shadow:var(--sh-md)}
+  .review::after{content:'';position:absolute;right:-30px;bottom:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.12)}
+  .review-top{position:relative;display:flex;align-items:center;gap:14px}
+  .review-score{font-family:'Bricolage Grotesque';font-weight:800;font-size:2.7rem;line-height:1}
+  .review-stars{display:flex;gap:2px;margin-bottom:3px;color:#fff}
+  .review-stars svg{width:18px;height:18px}
+  .review-lead{position:relative}
+  .review-lead h3{font-family:'Bricolage Grotesque';font-weight:700;font-size:1.2rem;line-height:1.2}
+  .review-lead p{font-size:.86rem;opacity:.85;margin-top:3px}
+  .review-count{font-size:.82rem;font-weight:600;opacity:.85}
+  .review-cta{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;margin-top:18px;padding:14px;border-radius:var(--r-md);background:#fff;color:var(--brand);font-weight:700;font-size:.98rem;transition:transform .2s var(--ease)}
+  .review-cta:active{transform:scale(.97)}
+  .review-cta svg{width:19px;height:19px}
+
+  /* WI-FI */
+  .wifi{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:var(--r-md);background:var(--card);border:1px solid var(--card-line);box-shadow:var(--sh-sm)}
+  .wifi .ic{flex-shrink:0;width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:var(--brand-soft);color:var(--brand)}
+  .wifi .ic svg{width:24px;height:24px}
+  .wifi-info{flex:1;min-width:0}
+  .wifi-info .k{font-size:.72rem;color:var(--ink-faint);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .wifi-info .ssid{font-weight:600;font-size:.95rem;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wifi-info .pass{font-family:'Bricolage Grotesque';font-weight:700;font-size:1.15rem;letter-spacing:.04em;margin-top:6px;color:var(--brand)}
+  .copy{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:10px 13px;border-radius:var(--r-sm);background:var(--brand);color:#fff;font-weight:700;font-size:.82rem;transition:transform .15s var(--ease),background .2s}
+  .copy:active{transform:scale(.93)}
+  .copy.done{background:#10b981}
+  .copy svg{width:15px;height:15px}
+
+  /* REDES */
+  .socials{display:flex;flex-wrap:wrap;gap:10px}
+  .socials a{display:flex;align-items:center;gap:9px;padding:11px 15px;border-radius:var(--r-full);background:var(--card);border:1px solid var(--card-line);box-shadow:var(--sh-sm);font-weight:600;font-size:.88rem;transition:transform .2s var(--ease),box-shadow .2s}
+  .socials a:active{transform:scale(.95)}
+  @media(hover:hover){.socials a:hover{box-shadow:var(--sh-md)}}
+  .socials a svg{width:18px;height:18px;color:var(--brand)}
+
+  /* HORÁRIO */
+  .hours{border-radius:var(--r-md);background:var(--card);border:1px solid var(--card-line);box-shadow:var(--sh-sm);overflow:hidden}
+  .hours li{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;font-size:.9rem;border-top:1px solid var(--card-line)}
+  .hours li:first-child{border-top:none}
+  .hours li .day{color:var(--ink-soft);font-weight:500}
+  .hours li .hrs{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .hours li.today{background:var(--brand-soft)}
+  .hours li.today .day{color:var(--brand);font-weight:700}
+  .hours-24{display:flex;align-items:center;gap:14px;padding:18px;border-radius:var(--r-md);background:var(--brand-soft);border:1px solid var(--card-line)}
+  .hours-24 .ic{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:var(--brand);color:#fff;flex-shrink:0}
+  .hours-24 .ic svg{width:24px;height:24px}
+  .hours-24 .big{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.25rem;color:var(--brand)}
+  .hours-24 .small{font-size:.86rem;color:var(--ink-soft)}
+
+  /* SERVIÇOS */
+  .services{display:flex;flex-wrap:wrap;gap:9px}
+  .services a{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border-radius:var(--r-full);background:var(--card);border:1px solid var(--card-line);box-shadow:var(--sh-sm);font-weight:600;font-size:.87rem;transition:transform .2s var(--ease),box-shadow .2s}
+  .services a:active{transform:scale(.95)}
+  @media(hover:hover){.services a:hover{box-shadow:var(--sh-md)}}
+  .services a svg{width:15px;height:15px;color:var(--brand)}
+
+  /* CREDENCIAIS */
+  .creds{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  .cred{display:flex;align-items:flex-start;gap:11px;padding:14px;border-radius:var(--r-md);background:var(--card);border:1px solid var(--card-line);box-shadow:var(--sh-sm)}
+  .cred .ic{flex-shrink:0;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--brand-soft);color:var(--brand)}
+  .cred .ic svg{width:18px;height:18px}
+  .cred .t{font-family:'Bricolage Grotesque';font-weight:700;font-size:.9rem;line-height:1.15}
+  .cred .s{font-size:.76rem;color:var(--ink-soft);margin-top:2px;line-height:1.3}
+
+  /* MAPA */
+  .map{position:relative;width:100%;height:170px;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--card-line);box-shadow:var(--sh-sm);margin-bottom:12px;background:var(--card)}
+  .map iframe{width:100%;height:100%;border:0;display:block;filter:saturate(1.05)}
+
+  /* ENDEREÇO */
+  .addr{display:block;padding:18px;border-radius:var(--r-md);background:var(--card);border:1px solid var(--card-line);box-shadow:var(--sh-sm);transition:box-shadow .2s}
+  @media(hover:hover){.addr:hover{box-shadow:var(--sh-md)}}
+  .addr .row{display:flex;align-items:flex-start;gap:13px}
+  .addr .ic{flex-shrink:0;width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:var(--brand-soft);color:var(--brand)}
+  .addr .ic svg{width:22px;height:22px}
+  .addr-text{flex:1}
+  .addr-text p{font-size:.92rem;color:var(--ink-soft);line-height:1.5}
+  .addr-text .go{display:inline-flex;align-items:center;gap:5px;margin-top:8px;color:var(--brand);font-weight:700;font-size:.86rem}
+  .addr-text .go svg{width:15px;height:15px}
+
+  /* SALVAR CONTATO */
+  .save{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px;border-radius:var(--r-md);background:var(--brand);color:#fff;font-weight:700;font-size:1rem;box-shadow:var(--sh-md);transition:transform .2s var(--ease)}
+  .save:active{transform:scale(.98)}
+  .save svg{width:20px;height:20px}
+
+  /* RODAPÉ */
+  footer{margin-top:32px;text-align:center}
+  .share{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;padding:11px 18px;border-radius:var(--r-full);background:var(--card);border:1px solid var(--card-line);box-shadow:var(--sh-sm);font-weight:600;font-size:.86rem;color:var(--ink-soft)}
+  .share svg{width:16px;height:16px}
+  .credit{font-size:.76rem;color:var(--ink-faint)}
+  .credit a{color:var(--ink-soft);font-weight:600}
+
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(24px);background:var(--ink);color:#fff;font-weight:700;font-size:.88rem;padding:12px 20px;border-radius:var(--r-full);z-index:50;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:var(--sh-lg)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+  <main class="wrap" id="app"></main>
+  <div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   ⚙️  CONFIG — LIFE MAIS SAÚDE
+   ===================================================================== */
+const CONFIG = {
+  brand: { color:'#0F766E', color2:'#14B8A6' },
+
+  business: {
+    name:    'Life Mais Saúde',
+    category:'Ambulância · Atendimento pré-hospitalar 24h',
+    tagline: 'Remoções, transferências, cobertura de eventos e home care em Campinas e região, com segurança e agilidade.',
+    logo:    'https://lifemaissaude.com/logo.png',
+    cover:   'https://lifemaissaude.com/images/cobertura-de-eventos.jpeg'
+  },
+
+  // Atendimento 24h: mostra selo "24 horas" no lugar da tabela de horários
+  alwaysOpen: true,
+
+  // ⚠️ AVALIAÇÃO DO GOOGLE — preencha quando tiver os dados reais:
+  //   url  = link "escrever avaliação" do perfil no Google (g.page/r/...../review)
+  //   score/count = nota e nº de avaliações. Deixe score:null para esconder o número
+  //   (mostra só o convite "Avalie", sem exibir nota que você não confirmou).
+  rating: {
+    score: null,
+    count: null,
+    url:   'https://g.page/r/CeRSt8sRzOLsEAE/review'
+  },
+
+  // Wi-Fi de visitantes — ⚠️ TROQUE pela senha real da rede de visitantes
+  wifi: { ssid:'LifeMais_Visitantes', password:'TROCAR-SENHA' },
+
+  actions: {
+    whatsapp:'5519992385046',          // urgência (vira botão destacado)
+    phone:   '+551932178619',
+    website: 'https://lifemaissaude.com',
+    menu:    null,
+    maps:    'https://maps.google.com/?q=Life+Mais+Sa%C3%BAde+Av+Guarani+603+Campinas+SP'
+  },
+
+  // Redes sociais — adicione as URLs reais da Life quando tiver
+  socials: [
+    { type:'instagram', label:'@lifemaissaudee', url:'https://www.instagram.com/lifemaissaudee/' },
+  ],
+
+  hours: null, // não usado quando alwaysOpen=true
+
+  // Serviços principais (atalhos para o site). Remova/edite à vontade.
+  services: [
+    { label:'Cobertura de eventos',          url:'https://lifemaissaude.com/cobertura-de-eventos' },
+    { label:'Remoções e transferências',     url:'https://lifemaissaude.com/transferencia-inter-hospitalar' },
+    { label:'Ambulância UTI',                url:'https://lifemaissaude.com/ambulancia-uti' },
+    { label:'Atendimento pré-hospitalar',    url:'https://lifemaissaude.com/atendimento-pre-hospitalar' },
+    { label:'Home care',                     url:'https://lifemaissaude.com/home-care' }
+  ],
+
+  // Selos de confiança (E-E-A-T). Ótimo para empresas de saúde.
+  credentials: [
+    { title:'Vigilância Sanitária', text:'Alvará vigente' },
+    { title:'CNES nº 5755700',      text:'Cadastro Nacional de Saúde' },
+    { title:'+15 anos',             text:'Atuando desde 2010' },
+    { title:'Equipe técnica',       text:'Responsáveis técnicos médico e de enfermagem' }
+  ],
+
+  address: {
+    text:'Av. Guarani, 603 — Jardim Guarani, Campinas - SP, 13100-211',
+    mapsUrl:'https://maps.google.com/?q=Av.+Guarani,+603+-+Jardim+Guarani,+Campinas+-+SP,+13100-211',
+    embed:'https://www.google.com/maps?q=Av.+Guarani,+603+-+Jardim+Guarani,+Campinas+-+SP,+13100-211&z=15&output=embed'
+  },
+
+  contact: {
+    org:'Life Mais Saúde',
+    phone:'+551932178619',
+    whatsapp:'+5519992385046',
+    email:'contato@lifemaissaude.com',
+    website:'https://lifemaissaude.com'
+  },
+
+  footer:{ poweredBy:'RM Tech', poweredUrl:'https://rmtechbusines.com.br' }
+};
+
+/* =====================================================================
+   ⬇️  MOTOR — não precisa editar
+   ===================================================================== */
+const ICONS = {
+  whatsapp:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.69-6.16A11.87 11.87 0 0 1 .16 11.9C.16 5.33 5.5 0 12.07 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.57-5.34 11.91-11.9 11.91a11.9 11.9 0 0 1-5.7-1.45L.06 24zM6.6 20.2l.36.22a9.86 9.86 0 0 0 5.03 1.38h.01c5.45 0 9.9-4.44 9.9-9.9a9.85 9.85 0 0 0-2.9-7A9.78 9.78 0 0 0 12.08 2c-5.46 0-9.9 4.44-9.9 9.9a9.86 9.86 0 0 0 1.51 5.26l.24.38-1 3.65 3.67-.99zM17.4 14.3c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5l-.57-.02c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.47 0 1.46 1.06 2.86 1.21 3.06.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.28.18-1.41z"/></svg>',
+  phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+  route:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>',
+  globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+  star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+  google:'<svg viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z" opacity=".85"/><path fill="currentColor" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z" opacity=".6"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.06l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38z" opacity=".75"/></svg>',
+  wifi:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>',
+  copy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+  pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+  download:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
+  share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>',
+  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+  cross:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h5v5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2z"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>',
+  grid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>',
+  chevron:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
+  instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>',
+  facebook:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+  linkedin:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-12h4v1.5a6 6 0 0 1 2-1.5zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg>',
+  youtube:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.46-5.18a2.78 2.78 0 0 0-1.94-1.96C18.88 4.4 12 4.4 12 4.4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.82 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.18 2.78 2.78 0 0 0 1.94 1.96C5.12 19.6 12 19.6 12 19.6s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96C23 15.5 23 12 23 12zM9.75 15.27V8.73L15.5 12z"/></svg>',
+  site:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
+};
+const DAYS = [['dom','Domingo'],['seg','Segunda'],['ter','Terça'],['qua','Quarta'],['qui','Quinta'],['sex','Sexta'],['sab','Sábado']];
+const el = (h)=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstChild;};
+const esc = (s)=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function render(){
+  const c=CONFIG, app=document.getElementById('app');
+  document.documentElement.style.setProperty('--brand',c.brand.color);
+  document.documentElement.style.setProperty('--brand-2',c.brand.color2||c.brand.color);
+  document.documentElement.style.setProperty('--brand-soft',hexA(c.brand.color,.10));
+  let d=0; const delay=()=>`style="animation-delay:${(d++)*60}ms"`;
+
+  const logoInner = c.business.logo ? `<img src="${esc(c.business.logo)}" alt="${esc(c.business.name)}">` : `<span>${esc(c.business.name.trim()[0]||'•')}</span>`;
+  app.appendChild(el(`
+    <header class="reveal" ${delay()}>
+      <div class="hero">${c.business.cover?`<div class="hero-cover"><img src="${esc(c.business.cover)}" alt=""></div>`:''}</div>
+      <div class="id">
+        <div class="logo">${logoInner}</div>
+        <h1 class="biz-name">${esc(c.business.name)}</h1>
+        ${c.business.category?`<div class="biz-cat">${esc(c.business.category)}</div>`:''}
+        ${c.business.tagline?`<p class="biz-tag">${esc(c.business.tagline)}</p>`:''}
+        ${c.alwaysOpen?`<div class="status open"><span class="dot"></span><span class="label">Aberto agora</span><span class="sub">· Atendimento 24h</span></div>`:''}
+      </div>
+    </header>`));
+
+  /* AÇÕES RÁPIDAS */
+  const a=c.actions||{}; const q=[];
+  if(a.whatsapp) q.push(['https://wa.me/'+a.whatsapp,'whatsapp','WhatsApp',true]);
+  if(a.phone)    q.push(['tel:'+a.phone,'phone','Ligar',false]);
+  if(a.maps)     q.push([a.maps,'route','Como chegar',false]);
+  if(a.menu)     q.push([a.menu,'globe','Cardápio',false]);
+  if(a.website)  q.push([a.website,'globe','Site',false]);
+  if(q.length){
+    const grid=el(`<section class="reveal" ${delay()}><div class="quick"></div></section>`);
+    const g=grid.querySelector('.quick');
+    g.style.gridTemplateColumns=`repeat(${Math.min(q.length,4)},1fr)`;
+    q.slice(0,8).forEach(([href,ic,lbl,urgent])=>g.appendChild(el(
+      `<a class="${urgent?'urgent':''}" href="${esc(href)}" target="_blank" rel="noopener"><span class="ic">${ICONS[ic]}</span><span>${esc(lbl)}</span></a>`)));
+    app.appendChild(grid);
+  }
+
+  /* AVALIAÇÃO GOOGLE */
+  if(c.rating&&c.rating.url){
+    let inner;
+    if(c.rating.score){
+      let stars='';for(let i=0;i<5;i++)stars+= i<Math.round(c.rating.score)?ICONS.star:ICONS.star.replace('currentColor','rgba(255,255,255,.35)');
+      inner=`<div class="review-top">
+          <div class="review-score">${c.rating.score.toFixed(1)}</div>
+          <div><div class="review-stars">${stars}</div>${c.rating.count?`<div class="review-count">${c.rating.count} avaliações no Google</div>`:''}</div>
+        </div>`;
+    }else{
+      inner=`<div class="review-lead"><h3>Gostou do nosso atendimento?</h3><p>Deixe sua avaliação e ajude outras pessoas. Leva menos de 1 minuto.</p></div>`;
+    }
+    app.appendChild(el(`
+      <section class="reveal" ${delay()}>
+        <div class="eyebrow">${ICONS.star} Avaliações</div>
+        <div class="review">${inner}
+          <a class="review-cta" href="${esc(c.rating.url)}" target="_blank" rel="noopener">${ICONS.google} Avaliar no Google</a>
+        </div>
+      </section>`));
+  }
+
+  /* WI-FI */
+  if(c.wifi&&c.wifi.ssid){
+    const sec=el(`
+      <section class="reveal" ${delay()}>
+        <div class="eyebrow">${ICONS.wifi} Wi-Fi para visitantes</div>
+        <div class="wifi"><span class="ic">${ICONS.wifi}</span>
+          <div class="wifi-info"><div class="k">Rede</div><div class="ssid">${esc(c.wifi.ssid)}</div><div class="pass">${esc(c.wifi.password)}</div></div>
+          <button class="copy" id="wifiCopy">${ICONS.copy}<span>Copiar</span></button>
+        </div></section>`);
+    app.appendChild(sec);
+    sec.querySelector('#wifiCopy').addEventListener('click',function(){
+      copyText(c.wifi.password);const b=this;b.classList.add('done');b.innerHTML=ICONS.check+'<span>Copiado</span>';
+      setTimeout(()=>{b.classList.remove('done');b.innerHTML=ICONS.copy+'<span>Copiar</span>';},1800);
+    });
+  }
+
+  /* SERVIÇOS */
+  if(c.services&&c.services.length){
+    const sec=el(`<section class="reveal" ${delay()}><div class="eyebrow">${ICONS.grid} Nossos serviços</div><div class="services"></div></section>`);
+    const box=sec.querySelector('.services');
+    c.services.forEach(s=>box.appendChild(el(`<a href="${esc(s.url)}" target="_blank" rel="noopener"><span>${esc(s.label)}</span>${ICONS.chevron}</a>`)));
+    app.appendChild(sec);
+  }
+
+  /* CREDENCIAIS */
+  if(c.credentials&&c.credentials.length){
+    const sec=el(`<section class="reveal" ${delay()}><div class="eyebrow">${ICONS.shield} Segurança & credenciais</div><div class="creds"></div></section>`);
+    const box=sec.querySelector('.creds');
+    c.credentials.forEach(cr=>box.appendChild(el(`<div class="cred"><span class="ic">${ICONS.shield}</span><div><div class="t">${esc(cr.title)}</div><div class="s">${esc(cr.text)}</div></div></div>`)));
+    app.appendChild(sec);
+  }
+
+  /* REDES */
+  if(c.socials&&c.socials.length){
+    const sec=el(`<section class="reveal" ${delay()}><div class="eyebrow">${ICONS.share} Redes sociais</div><div class="socials"></div></section>`);
+    const box=sec.querySelector('.socials');
+    c.socials.forEach(s=>box.appendChild(el(`<a href="${esc(s.url)}" target="_blank" rel="noopener">${ICONS[s.type]||ICONS.site}<span>${esc(s.label||s.type)}</span></a>`)));
+    app.appendChild(sec);
+  }
+
+  /* HORÁRIO */
+  if(c.alwaysOpen){
+    app.appendChild(el(`<section class="reveal" ${delay()}>
+      <div class="eyebrow">${ICONS.clock} Atendimento</div>
+      <div class="hours-24"><span class="ic">${ICONS.cross}</span><div><div class="big">24 horas</div><div class="small">Central de emergência todos os dias, inclusive feriados</div></div></div>
+    </section>`));
+  } else if(c.hours){
+    const todayK=DAYS[new Date().getDay()][0];
+    const sec=el(`<section class="reveal" ${delay()}><div class="eyebrow">${ICONS.clock} Horário</div><ul class="hours"></ul></section>`);
+    const ul=sec.querySelector('.hours');
+    DAYS.forEach(([k,name])=>{const v=c.hours[k];ul.appendChild(el(`<li class="${k===todayK?'today':''}"><span class="day">${name}</span><span class="hrs">${v?esc(v.replace('-',' – ')):'Fechado'}</span></li>`));});
+    app.appendChild(sec);
+  }
+
+  /* ENDEREÇO + MAPA */
+  if(c.address&&c.address.text){
+    app.appendChild(el(`
+      <section class="reveal" ${delay()}>
+        <div class="eyebrow">${ICONS.pin} Onde estamos</div>
+        ${c.address.embed?`<div class="map"><iframe src="${esc(c.address.embed)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa da localização"></iframe></div>`:''}
+        <a class="addr" href="${esc(c.address.mapsUrl||'#')}" target="_blank" rel="noopener">
+          <div class="row"><span class="ic">${ICONS.pin}</span>
+            <div class="addr-text"><p>${esc(c.address.text)}</p><span class="go">Abrir rota no mapa ${ICONS.arrow}</span></div>
+          </div></a></section>`));
+  }
+
+  /* SALVAR CONTATO */
+  if(c.contact){
+    const sec=el(`<section class="reveal" ${delay()}><button class="save" id="saveContact">${ICONS.download} Salvar contato no celular</button></section>`);
+    app.appendChild(sec);
+    sec.querySelector('#saveContact').addEventListener('click',()=>downloadVCard(c));
+  }
+
+  /* RODAPÉ */
+  const foot=el(`<footer class="reveal" ${delay()}>
+    <button class="share" id="shareBtn">${ICONS.share} Compartilhar este cartão</button>
+    ${c.footer&&c.footer.poweredBy?`<div class="credit">Cartão digital por <a href="${esc(c.footer.poweredUrl||'#')}" target="_blank" rel="noopener">${esc(c.footer.poweredBy)}</a></div>`:''}
+  </footer>`);
+  app.appendChild(foot);
+  foot.querySelector('#shareBtn').addEventListener('click',async()=>{
+    const data={title:c.business.name,text:c.business.name,url:location.href};
+    if(navigator.share){try{await navigator.share(data)}catch(e){}}else{copyText(location.href);toast('Link copiado!');}
+  });
+}
+
+function hexA(hex,al){const m=hex.replace('#','');const n=m.length===3?m.split('').map(x=>x+x).join(''):m;const r=parseInt(n.substr(0,2),16),g=parseInt(n.substr(2,2),16),b=parseInt(n.substr(4,2),16);return `rgba(${r},${g},${b},${al})`;}
+function copyText(t){if(navigator.clipboard){navigator.clipboard.writeText(t).catch(()=>fallbackCopy(t));}else fallbackCopy(t);}
+function fallbackCopy(t){const i=document.createElement('textarea');i.value=t;document.body.appendChild(i);i.select();try{document.execCommand('copy')}catch(e){}i.remove();}
+let toastT;function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2200);}
+function downloadVCard(c){
+  const b=c.business,ct=c.contact;
+  const v=['BEGIN:VCARD','VERSION:3.0','FN:'+b.name,'ORG:'+(ct.org||b.name),
+    ct.phone?'TEL;TYPE=WORK,VOICE:'+ct.phone:'',ct.whatsapp?'TEL;TYPE=CELL:'+ct.whatsapp:'',
+    ct.email?'EMAIL:'+ct.email:'',ct.website?'URL:'+ct.website:'',
+    c.address&&c.address.text?'ADR;TYPE=WORK:;;'+c.address.text.replace(/,/g,';'):'','END:VCARD'].filter(Boolean).join('\r\n');
+  const blob=new Blob([v],{type:'text/vcard'});const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download=b.name.replace(/\s+/g,'-').toLowerCase()+'.vcf';
+  document.body.appendChild(a);a.click();a.remove();toast('Contato pronto para salvar');
+}
+render();
+</script>
+</body>
+</html>

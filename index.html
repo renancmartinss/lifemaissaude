@@ -18,9 +18,10 @@
   <meta name="geo.region" content="BR-SP">
   <meta name="geo.placename" content="Campinas, São Paulo">
   <link rel="canonical" href="https://lifemaissaude.com/">
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="apple-touch-icon" href="logo.png">
-  <title>Life Mais Saúde — Ambulância e Cobertura de Eventos em São Paulo e Campinas</title>
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
+  <title>Ambulância Particular e Eventos em Campinas | Life Mais Saúde</title>
+  <link rel="preload" as="image" href="/images/hero-ambulancia-life-mais-saude.webp" fetchpriority="high">
 
   <!-- Open Graph / Redes sociais -->
   <meta property="og:type" content="website">
@@ -192,6 +193,14 @@
       margin-bottom: 2rem; backdrop-filter: blur(8px);
     }
     .hero-price strong { color: #CCFBF1; font-size: 1.25rem; }
+    /* Os dois selos do herói viram um par: a margem sai de cada um e passa
+       para o grupo, senão o de baixo herda 2rem e abre um buraco no meio. */
+    .hero-selos { display: flex; flex-direction: column; align-items: flex-start; gap: .625rem; margin-bottom: 2rem; }
+    .hero-selos .hero-price { margin-bottom: 0; max-width: 46ch; }
+    /* o selo de eventos tem duas linhas — o ícone precisa subir junto do texto */
+    .hero-price--evento { align-items: flex-start; font-weight: 500; line-height: 1.45; }
+    .hero-price--evento svg { margin-top: .12rem; }
+    .hero-price--evento strong { font-size: 1rem; font-weight: 700; }
     .hero-coverage { display: flex; flex-direction: column; gap: .625rem; margin-bottom: 2rem; }
     .hero-coverage-line { display: flex; align-items: flex-start; gap: .625rem; color: rgba(255,255,255,.9); font-size: 1rem; line-height: 1.55; max-width: 54ch; }
     .hero-coverage-line svg { flex-shrink: 0; margin-top: .15rem; color: #5EEAD4; }
@@ -484,12 +493,16 @@
 
     /* ─── Footer ─────────────────────────────────────── */
     footer { background: var(--bg-dark); color: rgba(255,255,255,.7); padding: 4rem 1.5rem 2rem; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.08); }
     .footer-logo-img { height: 52px; width: auto; object-fit: contain; margin-bottom: 1rem; filter: brightness(0) invert(1); }
     .footer-desc { font-size: .9rem; line-height: 1.7; max-width: 26ch; margin-bottom: 1.5rem; }
     .footer-contact-list { display: flex; flex-direction: column; gap: .625rem; }
     .footer-contact-item { display: flex; align-items: center; gap: .5rem; font-size: .875rem; }
     .footer-contact-item svg { width: 15px; height: 15px; fill: none; stroke: #5EEAD4; stroke-width: 2; stroke-linecap: round; flex-shrink: 0; }
+    .footer-social { display: flex; gap: .625rem; margin-top: 1.25rem; }
+    .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); color: #fff; transition: background var(--dur) var(--ease), transform var(--dur) var(--ease); }
+    .footer-social a:hover { background: var(--red); transform: translateY(-2px); }
+    .footer-social a svg { width: 19px; height: 19px; }
     .footer-col h4 { font-family: 'Sora', sans-serif; font-weight: 600; font-size: .9375rem; color: #fff; margin-bottom: 1.25rem; }
     .footer-col ul { display: flex; flex-direction: column; gap: .625rem; }
     .footer-col ul li a { font-size: .9rem; color: rgba(255,255,255,.6); transition: color var(--dur) var(--ease); }
@@ -586,6 +599,7 @@
     "name": "Life Mais Saúde",
     "description": "Ambulância particular e atendimento pré-hospitalar 24h em São Paulo, Campinas e região. Cobertura de eventos, remoções, transferência inter-hospitalar, home care e bombeiro civil.",
     "url": "https://lifemaissaude.com/",
+    "sameAs": ["https://www.instagram.com/lifemaissaudee/"],
     "logo": "https://lifemaissaude.com/logo.png",
     "image": "https://lifemaissaude.com/images/cobertura-de-eventos.jpeg",
     "telephone": ["+551932178619", "+5519992385046"],
@@ -688,6 +702,21 @@
     }
   }
   </script>
+
+  <!-- Schema: FAQPage (home) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question","name": "Quanto custa uma ambulância particular?","acceptedAnswer": {"@type": "Answer","text": "Na Life Mais Saúde as remoções começam a partir de R$ 250,00. O valor final depende do tipo de ambulância (básica ou UTI móvel), da distância e do tempo de atendimento. Para eventos e contratos corporativos, emitimos orçamento sob medida. Peça uma proposta pelo WhatsApp (19) 99238-5046."}},
+      {"@type": "Question","name": "A Life Mais Saúde atende 24 horas?","acceptedAnswer": {"@type": "Answer","text": "Sim. Nossa central de emergência funciona 24 horas por dia, 7 dias por semana, incluindo finais de semana e feriados, em Campinas, São Paulo e toda a Região Metropolitana de Campinas."}},
+      {"@type": "Question","name": "Quais cidades a Life Mais Saúde atende?","acceptedAnswer": {"@type": "Answer","text": "Atendemos Campinas (sede), São Paulo e toda a Região Metropolitana de Campinas, incluindo Valinhos, Vinhedo, Paulínia, Indaiatuba, Jundiaí, Jaguariúna, Hortolândia, Sumaré e Americana."}},
+      {"@type": "Question","name": "Vocês fazem cobertura médica para eventos?","acceptedAnswer": {"@type": "Answer","text": "Sim, é uma de nossas especialidades. Cobrimos shows, formaturas, casamentos, congressos, feiras, eventos corporativos e esportivos com ambulâncias, posto médico e equipe de primeiros socorros dimensionada conforme a legislação e o porte do evento."}},
+      {"@type": "Question","name": "Que tipos de ambulância vocês têm?","acceptedAnswer": {"@type": "Answer","text": "Trabalhamos com ambulâncias de suporte básico (Tipo B) e UTI móvel (Tipo D), com equipe médica, de enfermagem e socorristas, equipadas com monitor, desfibrilador (DEA), oxigênio e medicamentos para urgência e emergência."}}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -702,11 +731,12 @@
 <header class="navbar" id="navbar">
   <nav class="nav-inner" aria-label="Navegação principal">
     <a href="#" class="nav-logo" aria-label="Life Mais Saúde — Página inicial">
-      <img src="logo.png" alt="Life Mais Saúde" width="160" height="48">
+      <img src="/logo.png" alt="Life Mais Saúde" width="160" height="48">
     </a>
     <ul class="nav-links" role="list">
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#sobre">Quem Somos</a></li>
+      <li><a href="/blog/">Blog</a></li>
       <li><a href="#contato">Contato</a></li>
       <li><a href="https://wa.me/5519992385046?text=Ol%C3%A1%2C+preciso+de+uma+ambu%C3%A2ncia+com+urg%C3%AAncia." target="_blank" rel="noopener" class="nav-urgency">🚨 Urgência e Emergência</a></li>
     </ul>
@@ -729,7 +759,7 @@
   <!-- Hero -->
   <section class="hero" aria-labelledby="hero-heading">
     <div class="hero-bg" aria-hidden="true">
-      <img src="images/hero-ambulancia-life-mais-saude.jpg" alt="" loading="eager" fetchpriority="high">
+      <img src="/images/hero-ambulancia-life-mais-saude.webp" alt="Ambulância da Life Mais Saúde pronta para atendimento em Campinas e região" loading="eager" fetchpriority="high" width="900" height="1200">
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-inner">
@@ -739,21 +769,23 @@
           Atendimento Pré-Hospitalar
         </div>
         <h1 id="hero-heading">
-          Quando cada segundo<br>
-          <span>faz a diferença</span>
+          Ambulância e Cobertura Médica para<br>
+          <span>Eventos em Campinas</span> e Região
         </h1>
         <p class="hero-sub">
-          Serviço de ambulância particular para remoção, eventos e empresas. Atendimento pré-hospitalar com segurança, agilidade e humanização.
+          Quando cada segundo faz a diferença. Ambulância particular 24h, UTI móvel, remoção de pacientes e cobertura de eventos com segurança, agilidade e humanização.
         </p>
-        <div class="hero-price" aria-label="Remoções a partir de R$ 250,00">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Remoções a partir de <strong>R$ 250,00</strong>
+        <div class="hero-selos">
+          <div class="hero-price" aria-label="Remoções a partir de R$ 250,00">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Remoções a partir de <strong>R$ 250,00</strong>
+          </div>
+          <div class="hero-price hero-price--evento" aria-label="Cobrimos sua proposta de eventos: melhor valor de cobertura de eventos em Campinas e região">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><path d="M7 7h.01"/></svg>
+            <span><strong>Cobrimos sua proposta de eventos</strong> — melhor valor de cobertura de eventos de Campinas e região.</span>
+          </div>
         </div>
         <div class="hero-coverage">
-          <p class="hero-coverage-line">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-            <span><strong>Cobrimos qualquer proposta para eventos.</strong> Faça seu orçamento e garantimos o melhor custo-benefício.</span>
-          </p>
           <p class="hero-coverage-line">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>Atendemos <strong>São Paulo, Campinas e região</strong> — ambulância e cobertura de eventos em toda a região metropolitana.</span>
@@ -824,13 +856,13 @@
 
         <article class="svc-card">
           <div class="svc-img">
-            <img src="images/atendimento-pre-hospitalar.jpeg" alt="Atendimento pré-hospitalar Life Mais Saúde em São Paulo e Campinas" loading="lazy" width="600" height="220">
+            <img src="/images/atendimento-pre-hospitalar.webp" alt="Atendimento pré-hospitalar Life Mais Saúde em São Paulo e Campinas" loading="lazy" width="600" height="220">
             <div class="svc-img-overlay" aria-hidden="true"></div>
           </div>
           <div class="svc-body">
             <h3 class="svc-title">Atendimento Pré-Hospitalar</h3>
             <p class="svc-desc">Equipe médica, de enfermagem e socorristas treinados para avaliação, estabilização clínica e encaminhamento hospitalar. Método "stay and play" com pré-diagnóstico imediato.</p>
-            <a href="atendimento-pre-hospitalar" class="svc-cta">
+            <a href="/servicos/atendimento-pre-hospitalar" class="svc-cta">
               Saiba mais
               <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
@@ -839,13 +871,13 @@
 
         <article class="svc-card">
           <div class="svc-img">
-            <img src="images/cobertura-de-eventos.jpeg" alt="Cobertura de eventos com ambulância e equipe médica em São Paulo e Campinas" loading="lazy" width="600" height="220">
+            <img src="/images/cobertura-de-eventos.webp" alt="Cobertura de eventos com ambulância e equipe médica em São Paulo e Campinas" loading="lazy" width="600" height="220">
             <div class="svc-img-overlay" aria-hidden="true"></div>
           </div>
           <div class="svc-body">
             <h3 class="svc-title">Cobertura de Eventos</h3>
             <p class="svc-desc">Suporte médico para shows, formaturas, congressos, feiras empresariais, jogos de futebol e muito mais. Garantimos a segurança dos seus convidados durante todo o evento.</p>
-            <a href="cobertura-de-eventos" class="svc-cta">
+            <a href="/servicos/cobertura-de-eventos" class="svc-cta">
               Saiba mais
               <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
@@ -854,13 +886,13 @@
 
         <article class="svc-card">
           <div class="svc-img">
-            <img src="images/transferencia-inter-hospitalar.jpeg" alt="Ambulância para transferência inter-hospitalar em São Paulo e Campinas" loading="lazy" width="600" height="220">
+            <img src="/images/transferencia-inter-hospitalar.webp" alt="Ambulância para transferência inter-hospitalar em São Paulo e Campinas" loading="lazy" width="600" height="220">
             <div class="svc-img-overlay" aria-hidden="true"></div>
           </div>
           <div class="svc-body">
             <h3 class="svc-title">Transferência Inter-Hospitalar</h3>
             <p class="svc-desc">Transporte especializado entre hospitais, clínicas e pronto-socorros com ambulâncias UTI ou convencionais. Equipe treinada para pacientes que não podem ser transportados em veículos comuns.</p>
-            <a href="transferencia-inter-hospitalar" class="svc-cta">
+            <a href="/servicos/transferencia-inter-hospitalar" class="svc-cta">
               Saiba mais
               <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
@@ -869,13 +901,13 @@
 
         <article class="svc-card">
           <div class="svc-img">
-            <img src="images/home-care.jpg" alt="Home care — cuidado domiciliar e enfermagem 24h" loading="lazy" width="600" height="220">
+            <img src="/images/home-care.webp" alt="Home care — cuidado domiciliar e enfermagem 24h" loading="lazy" width="600" height="220">
             <div class="svc-img-overlay" aria-hidden="true"></div>
           </div>
           <div class="svc-body">
             <h3 class="svc-title">Home Care</h3>
             <p class="svc-desc">Cuidado profissional no conforto do lar. Visitas médicas domiciliares, enfermagem 24h, administração de medicamentos, curativos, sondagens e acompanhamento de pacientes acamados.</p>
-            <a href="home-care" class="svc-cta">
+            <a href="/servicos/home-care" class="svc-cta">
               Saiba mais
               <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
@@ -884,13 +916,13 @@
 
         <article class="svc-card">
           <div class="svc-img">
-            <img src="images/bombeiro-civil-brigadista.jpeg" alt="Bombeiro civil e brigadista profissional para eventos e empresas" loading="lazy" width="600" height="220">
+            <img src="/images/bombeiro-civil-brigadista.webp" alt="Bombeiro civil e brigadista profissional para eventos e empresas" loading="lazy" width="600" height="220">
             <div class="svc-img-overlay" aria-hidden="true"></div>
           </div>
           <div class="svc-body">
             <h3 class="svc-title">Bombeiro Civil e Brigadista</h3>
             <p class="svc-desc">Brigadistas profissionais para eventos, empresas, construções e indústrias. Primeiros socorros, evacuação e prevenção de incêndios. Assessoria completa para documentação AVCB.</p>
-            <a href="bombeiro-civil-brigadista" class="svc-cta">
+            <a href="/servicos/bombeiro-civil-brigadista" class="svc-cta">
               Saiba mais
               <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
@@ -899,13 +931,13 @@
 
         <article class="svc-card">
           <div class="svc-img">
-            <img src="images/cursos-capacitacao.jpg" alt="Cursos de capacitação profissional em saúde e primeiros socorros" loading="lazy" width="600" height="220">
+            <img src="/images/cursos-capacitacao.webp" alt="Cursos de capacitação profissional em saúde e primeiros socorros" loading="lazy" width="600" height="220">
             <div class="svc-img-overlay" aria-hidden="true"></div>
           </div>
           <div class="svc-body">
             <h3 class="svc-title">Cursos de Capacitação</h3>
             <p class="svc-desc">Formação de qualidade com instrutores experientes. BLS/ALS, Atendimento Pré-Hospitalar, Primeiros Socorros, Prevenção de Incêndios, Bombeiro Civil e Capacitação para Enfermagem.</p>
-            <a href="cursos-capacitacao" class="svc-cta">
+            <a href="/servicos/cursos-capacitacao" class="svc-cta">
               Saiba mais
               <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
@@ -931,59 +963,89 @@
     <div class="marquee fade-up" role="region" aria-label="Galeria de eventos atendidos pela Life Mais Saúde">
       <div class="marquee-track">
         <!-- conjunto 1 -->
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-01.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-02.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-03.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-04.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-05.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-06.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-07.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-08.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-09.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-10.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-11.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-12.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-13.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-14.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-15.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-16.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-17.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-18.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-19.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-20.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-21.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-22.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-23.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-24.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-25.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item"><img src="images/carrosel/evento-cobertura-life-mais-saude-26.jpeg" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-27.webp" alt="Socorristas da Life Mais Saúde ao lado da ambulância durante atendimento externo" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-28.webp" alt="Equipe da Life Mais Saúde na entrada de evento corporativo" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-29.webp" alt="Atendimento de emergência realizado dentro da ambulância da Life Mais Saúde" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-30.webp" alt="Ambulância de emergência da Life Mais Saúde de plantão em evento noturno" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-31.webp" alt="Equipe completa da Life Mais Saúde reunida antes da cobertura de um evento" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-32.webp" alt="Paciente sendo monitorado dentro da ambulância UTI da Life Mais Saúde" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-33.webp" alt="Ambulâncias UTI da Life Mais Saúde posicionadas para cobertura de evento" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-34.webp" alt="Equipe da Life Mais Saúde em plantão noturno ao lado da ambulância" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-35.webp" alt="Equipe da Life Mais Saúde conferindo os equipamentos da ambulância antes do atendimento" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-36.webp" alt="Equipe da Life Mais Saúde na cobertura médica de evento da Syngenta" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-37.webp" alt="Profissional da Life Mais Saúde ao lado da ambulância durante cobertura de evento" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-38.webp" alt="Profissional da Life Mais Saúde em ponto de atendimento móvel durante evento" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-39.webp" alt="Ambulância da Life Mais Saúde em atendimento corporativo" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-40.webp" alt="Equipe da Life Mais Saúde na checagem da ambulância antes do evento" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-41.webp" alt="Ambulância da Life Mais Saúde na entrada de um evento empresarial" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-42.webp" alt="Profissional da Life Mais Saúde na cobertura de evento do Cecafé" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-01.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-02.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-03.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-04.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-05.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-06.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-08.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-09.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-10.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-11.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-12.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-13.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-14.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-15.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-16.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-17.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-18.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-19.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-20.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-21.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-22.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-23.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-24.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-25.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item"><img src="/images/carrosel/evento-cobertura-life-mais-saude-26.webp" alt="Cobertura de evento atendida pela Life Mais Saúde em São Paulo e Campinas" decoding="async" width="300" height="225"></div>
         <!-- conjunto 2 (duplicado para loop contínuo) -->
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-01.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-02.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-03.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-04.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-05.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-06.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-07.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-08.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-09.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-10.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-11.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-12.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-13.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-14.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-15.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-16.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-17.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-18.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-19.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-20.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-21.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-22.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-23.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-24.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-25.jpeg" alt="" decoding="async" width="300" height="225"></div>
-        <div class="marquee-item" aria-hidden="true"><img src="images/carrosel/evento-cobertura-life-mais-saude-26.jpeg" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-27.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-28.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-29.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-30.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-31.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-32.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-33.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-34.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-35.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-36.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-37.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-38.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-39.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-40.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-41.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-42.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-01.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-02.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-03.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-04.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-05.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-06.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-08.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-09.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-10.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-11.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-12.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-13.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-14.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-15.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-16.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-17.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-18.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-19.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-20.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-21.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-22.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-23.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-24.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-25.webp" alt="" decoding="async" width="300" height="225"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="/images/carrosel/evento-cobertura-life-mais-saude-26.webp" alt="" decoding="async" width="300" height="225"></div>
       </div>
     </div>
   </section>
@@ -1038,7 +1100,7 @@
       <div class="mission-inner">
         <div class="fade-up">
           <div class="mission-img-wrap">
-            <img src="images/conceito-remocoes-medicas.jpeg" alt="Novo conceito em remoções médicas — equipe Life Mais Saúde" loading="lazy" width="700" height="525">
+            <img src="/images/equipe-life-mais-saude.webp" alt="Equipe completa da Life Mais Saúde — socorristas, bombeiros civis, enfermagem e equipe médica em frente à ambulância" loading="lazy" width="1000" height="563">
             <div class="mission-img-overlay" aria-hidden="true"></div>
             <div class="mission-badge" aria-label="Mais de 10 anos de experiência">
               <span class="mission-badge-val">10+</span>
@@ -1095,6 +1157,28 @@
     </div>
   </section>
 
+  <!-- Nossa Frota -->
+  <section class="section" aria-labelledby="frota-heading">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-tag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Nossa Frota
+        </div>
+        <h2 class="section-heading" id="frota-heading">Ambulâncias para cada tipo de atendimento</h2>
+        <p class="section-sub">Frota própria com três categorias de ambulância — da remoção simples à UTI móvel de alta complexidade — sempre revisadas, equipadas e prontas 24h.</p>
+      </div>
+      <figure class="fade-up" style="margin:2.5rem auto 0;max-width:1000px">
+        <img src="/images/frota-ambulancias-life-mais-saude.webp" alt="Frota de ambulâncias Life Mais Saúde: Modelo A para remoção e transporte estável, Modelo B de suporte básico para urgências e Modelo D UTI móvel de suporte avançado para alta complexidade" loading="lazy" width="1245" height="665" style="width:100%;height:auto;border-radius:20px;border:1px solid var(--border);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)">
+      </figure>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.5rem" class="fade-up">
+        <a href="/servicos/transferencia-inter-hospitalar" style="text-align:center;font-size:.9375rem;color:var(--red);font-weight:700;text-decoration:underline">Modelo A — Remoções e transferências →</a>
+        <a href="/servicos/atendimento-pre-hospitalar" style="text-align:center;font-size:.9375rem;color:var(--red);font-weight:700;text-decoration:underline">Modelo B — Atendimento de urgência →</a>
+        <a href="/servicos/ambulancia-uti" style="text-align:center;font-size:.9375rem;color:var(--red);font-weight:700;text-decoration:underline">Modelo D — UTI Móvel →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Depoimentos — E-E-A-T -->
   <section class="section section-alt" aria-labelledby="depoimentos-heading">
     <div class="container">
@@ -1104,27 +1188,30 @@
           Depoimentos
         </div>
         <h2 class="section-heading" id="depoimentos-heading">O que nossos clientes dizem</h2>
-        <p class="section-sub">Mais de 5.000 atendimentos realizados com segurança, agilidade e humanização.</p>
+        <p class="section-sub">Nota <strong>5,0 ★</strong> no Google com mais de 90 avaliações — atendimentos com segurança, agilidade e humanização.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem" class="fade-up">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem" class="fade-up">
         <blockquote style="background:#fff;border-radius:20px;padding:1.75rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:1rem">
           <div style="color:#F59E0B;font-size:1.125rem" aria-label="5 estrelas">★★★★★</div>
-          <p style="font-size:.9375rem;color:var(--text-muted);line-height:1.7;flex:1">"Contratamos a Life Mais Saúde para nossa formatura e o atendimento foi impecável. Equipe pontual, profissional e com toda a estrutura necessária. Recomendo demais!"</p>
-          <footer style="font-size:.875rem;font-weight:600;color:var(--text)">Mariana R. <span style="font-weight:400;color:var(--text-muted)">— Formatura UNICAMP</span></footer>
+          <p style="font-size:.9375rem;color:var(--text-muted);line-height:1.7;flex:1">"Empresa excelente, sou médica e já cobri alguns eventos com eles, e posso dizer que são super profissionais, sempre buscando a excelência e o cuidado!"</p>
+          <div style="font-size:.875rem;font-weight:600;color:var(--text)">Larissa Santiago <span style="font-weight:400;color:var(--text-muted)">— Avaliação no Google</span></div>
         </blockquote>
         <blockquote style="background:#fff;border-radius:20px;padding:1.75rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:1rem">
           <div style="color:#F59E0B;font-size:1.125rem" aria-label="5 estrelas">★★★★★</div>
-          <p style="font-size:.9375rem;color:var(--text-muted);line-height:1.7;flex:1">"Precisamos transferir minha mãe de um hospital para outro de forma urgente. A Life Mais Saúde atendeu em menos de 1 hora, com ambulância UTI completa e médico a bordo. Salvaram a situação."</p>
-          <footer style="font-size:.875rem;font-weight:600;color:var(--text)">Carlos A. <span style="font-weight:400;color:var(--text-muted)">— Campinas, SP</span></footer>
+          <p style="font-size:.9375rem;color:var(--text-muted);line-height:1.7;flex:1">"Excelente atendimento! Equipe muito respeitosa, atenciosa e ágil. Realizam um serviço com rapidez, profissionalismo e muito cuidado com o paciente e a família. Estão de parabéns pela dedicação e humanização no atendimento!"</p>
+          <div style="font-size:.875rem;font-weight:600;color:var(--text)">Thamiris Morais <span style="font-weight:400;color:var(--text-muted)">— Avaliação no Google</span></div>
         </blockquote>
         <blockquote style="background:#fff;border-radius:20px;padding:1.75rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:1rem">
           <div style="color:#F59E0B;font-size:1.125rem" aria-label="5 estrelas">★★★★★</div>
-          <p style="font-size:.9375rem;color:var(--text-muted);line-height:1.7;flex:1">"Nosso evento corporativo em Campinas contou com a Life Mais Saúde pelo terceiro ano seguido. Sempre profissionalismo total, equipe capacitada e presença tranquilizadora para todos os participantes."</p>
-          <footer style="font-size:.875rem;font-weight:600;color:var(--text)">Fernanda M. <span style="font-weight:400;color:var(--text-muted)">— Gestora de Eventos, Valinhos</span></footer>
+          <p style="font-size:.9375rem;color:var(--text-muted);line-height:1.7;flex:1">"Profissionais super capacitados, gentis e atenciosos. No dia que mais precisei eles foram super rápidos. Indico de olhos fechados a todos."</p>
+          <div style="font-size:.875rem;font-weight:600;color:var(--text)">Suelen Fernandes <span style="font-weight:400;color:var(--text-muted)">— Avaliação no Google</span></div>
         </blockquote>
+      </div>
+      <div style="text-align:center;margin-top:1.5rem" class="fade-up">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Life+%2B+Saude+Av.+Guarani+603+Campinas" target="_blank" rel="noopener" style="font-size:.9375rem;color:var(--red);font-weight:700;text-decoration:underline">Ver todas as 92 avaliações no Google →</a>
       </div>
       <!-- Credenciais e E-E-A-T de saúde -->
-      <div style="margin-top:3rem;background:var(--navy);border-radius:20px;padding:2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem" class="fade-up" role="region" aria-label="Credenciais e certificações da Life Mais Saúde">
+      <div style="margin-top:3rem;background:var(--navy);border-radius:20px;padding:2.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem" class="fade-up" role="region" aria-label="Credenciais e certificações da Life Mais Saúde">
         <div style="text-align:center">
           <div style="width:52px;height:52px;border-radius:12px;background:rgba(15,118,110,.3);display:flex;align-items:center;justify-content:center;margin:0 auto .875rem">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1168,38 +1255,38 @@
         <h2 class="section-heading" id="cidades-heading">Cobertura em toda a Região Metropolitana</h2>
         <p class="section-sub">Atendemos Campinas, São Paulo e cidades da região com a mesma qualidade e agilidade de sempre.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem" class="fade-up">
-        <a href="ambulancia-sao-paulo" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-top:2.5rem" class="fade-up">
+        <a href="/cidades/ambulancia-sao-paulo" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
           <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">🏙️</div>
           <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">São Paulo</div>
           <div style="font-size:.8125rem;color:var(--text-muted)">Capital e Grande SP</div>
         </a>
-        <a href="ambulancia-vinhedo" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+        <a href="/cidades/ambulancia-vinhedo" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
           <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">🍇</div>
           <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">Vinhedo</div>
           <div style="font-size:.8125rem;color:var(--text-muted)">~30km de Campinas</div>
         </a>
-        <a href="ambulancia-valinhos" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+        <a href="/cidades/ambulancia-valinhos" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
           <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">🌿</div>
           <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">Valinhos</div>
           <div style="font-size:.8125rem;color:var(--text-muted)">~15km de Campinas</div>
         </a>
-        <a href="ambulancia-jundiai" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+        <a href="/cidades/ambulancia-jundiai" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
           <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">🏭</div>
           <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">Jundiaí</div>
           <div style="font-size:.8125rem;color:var(--text-muted)">~60km de Campinas</div>
         </a>
-        <a href="ambulancia-paulinia" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+        <a href="/cidades/ambulancia-paulinia" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
           <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">⚡</div>
           <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">Paulínia</div>
           <div style="font-size:.8125rem;color:var(--text-muted)">~18km de Campinas</div>
         </a>
-        <a href="ambulancia-jaguariuna" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+        <a href="/cidades/ambulancia-jaguariuna" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
           <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">🌾</div>
           <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">Jaguariúna</div>
           <div style="font-size:.8125rem;color:var(--text-muted)">~32km de Campinas</div>
         </a>
-        <a href="ambulancia-indaiatuba" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+        <a href="/cidades/ambulancia-indaiatuba" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
           <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">🏘️</div>
           <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">Indaiatuba</div>
           <div style="font-size:.8125rem;color:var(--text-muted)">~35km de Campinas</div>
@@ -1208,6 +1295,45 @@
           <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--red);margin-bottom:.375rem">Sua cidade não está aqui?</div>
           <a href="#contato" style="font-size:.8125rem;color:var(--red);font-weight:600;text-decoration:underline">Consulte disponibilidade →</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog / Conteúdo educativo -->
+  <section class="section section-alt" aria-labelledby="blog-heading">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-tag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Blog
+        </div>
+        <h2 class="section-heading" id="blog-heading">Guias práticos sobre ambulância e eventos</h2>
+        <p class="section-sub">Conteúdo educativo produzido pela equipe técnica da Life Mais Saúde para ajudar você a decidir com segurança.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:2.5rem" class="fade-up">
+        <a href="/blog/ambulancia-para-eventos-guia" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+          <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">🚑</div>
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">Ambulância para eventos: guia completo</div>
+          <div style="font-size:.8125rem;color:var(--text-muted)">Tipos, dimensionamento e o que exigir do fornecedor.</div>
+        </a>
+        <a href="/blog/e-obrigatorio-ambulancia-em-eventos" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+          <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">⚖️</div>
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">É obrigatório ter ambulância em eventos?</div>
+          <div style="font-size:.8125rem;color:var(--text-muted)">O que diz a legislação e quando a exigência se aplica.</div>
+        </a>
+        <a href="/blog/ambulancia-uti-o-que-e" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+          <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">🏥</div>
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">Ambulância UTI: o que é e quando usar</div>
+          <div style="font-size:.8125rem;color:var(--text-muted)">Diferenças para a ambulância básica e indicações.</div>
+        </a>
+        <a href="/blog/remocao-de-pacientes-guia" style="background:#fff;border-radius:16px;padding:1.375rem;border:1px solid var(--border);box-shadow:0 4px 6px -1px rgba(0,0,0,.08);transition:transform 220ms,box-shadow 220ms;display:block" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,.08)'">
+          <div style="font-size:1.375rem;margin-bottom:.5rem" aria-hidden="true">🩺</div>
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9375rem;color:var(--text);margin-bottom:.25rem">Remoção de pacientes: guia completo</div>
+          <div style="font-size:.8125rem;color:var(--text-muted)">Como funciona a transferência inter-hospitalar segura.</div>
+        </a>
+      </div>
+      <div style="text-align:center;margin-top:1.75rem">
+        <a href="/blog/" style="font-size:.9375rem;color:var(--red);font-weight:700;text-decoration:underline">Ver todos os artigos →</a>
       </div>
     </div>
   </section>
@@ -1249,7 +1375,7 @@
           </div>
         </div>
         <div class="diff-img-wrap fade-up">
-          <img src="images/parceiros-empresas.jpg" alt="Parceiros corporativos e empresas atendidas pela Life Mais Saúde" loading="lazy" width="600" height="480">
+          <img src="/images/parceiros-empresas.webp" alt="Parceiros corporativos e empresas atendidas pela Life Mais Saúde" loading="lazy" width="600" height="480">
         </div>
       </div>
     </div>
@@ -1334,11 +1460,11 @@
           <form id="contact-form" action="https://formsubmit.co/contato@lifemaissaude.com" method="POST" novalidate>
             <!-- FormSubmit config -->
             <input type="hidden" name="_subject" value="Nova solicitação — lifemaissaude.com">
-            <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_next" value="https://lifemaissaude.com/?enviado=1">
             <!-- Honeypot anti-spam -->
-            <input type="text" name="_honey" style="display:none">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="form-grid">
               <div class="form-group">
@@ -1376,7 +1502,7 @@
             </div>
             <button type="submit" class="form-submit" id="form-btn">Enviar Solicitação</button>
             <div class="form-feedback" id="form-feedback"></div>
-            <p class="form-note">Seus dados estão protegidos pela <a href="lgpd" style="color:var(--red);">LGPD</a>. Não enviamos spam.</p>
+            <p class="form-note">Seus dados estão protegidos pela <a href="/institucional/lgpd" style="color:var(--red);">LGPD</a>. Não enviamos spam.</p>
           </form>
         </div>
       </div>
@@ -1410,7 +1536,7 @@
 <footer aria-label="Rodapé">
   <div class="footer-inner">
     <div>
-      <img src="logo.png" alt="Life Mais Saúde" class="footer-logo-img" width="160" height="52">
+      <img src="/logo.png" alt="Life Mais Saúde" class="footer-logo-img" width="160" height="52">
       <p class="footer-desc">Atendimento pré-hospitalar de excelência. Segurança, agilidade e humanização em cada chamado.</p>
       <div class="footer-contact-list" aria-label="Contatos">
         <div class="footer-contact-item">
@@ -1426,28 +1552,51 @@
           <span>Av. Guarani, 603 — Jardim Guarani, Campinas - SP, 13100-211</span>
         </div>
       </div>
+      <div class="footer-social" aria-label="Redes sociais">
+        <a href="https://www.instagram.com/lifemaissaudee/" target="_blank" rel="noopener" aria-label="Instagram da Life Mais Saúde">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+        </a>
+      </div>
     </div>
     <div class="footer-col">
       <h4>Serviços</h4>
       <ul role="list">
-        <li><a href="atendimento-pre-hospitalar">Atendimento Pré-Hospitalar</a></li>
-        <li><a href="cobertura-de-eventos">Cobertura de Eventos</a></li>
-        <li><a href="transferencia-inter-hospitalar">Transferência Inter-Hospitalar</a></li>
-        <li><a href="home-care">Home Care</a></li>
-        <li><a href="bombeiro-civil-brigadista">Bombeiro Civil</a></li>
-        <li><a href="cursos-capacitacao">Cursos de Capacitação</a></li>
+        <li><a href="/servicos/atendimento-pre-hospitalar">Atendimento Pré-Hospitalar</a></li>
+        <li><a href="/servicos/cobertura-de-eventos">Cobertura de Eventos</a></li>
+        <li><a href="/servicos/ambulancia-para-empresas">Ambulância para Empresas</a></li>
+        <li><a href="/servicos/ambulancia-uti">Ambulância UTI</a></li>
+        <li><a href="/servicos/ambulancia-particular-campinas">Ambulância Particular</a></li>
+        <li><a href="/servicos/locacao-de-ambulancia">Locação de Ambulância</a></li>
+        <li><a href="/servicos/transferencia-inter-hospitalar">Remoção de Pacientes</a></li>
+        <li><a href="/servicos/home-care">Home Care</a></li>
+        <li><a href="/servicos/bombeiro-civil-brigadista">Bombeiro Civil</a></li>
+        <li><a href="/servicos/cursos-capacitacao">Cursos de Capacitação</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Cidades Atendidas</h4>
       <ul role="list">
-        <li><a href="ambulancia-campinas">Campinas</a></li><li><a href="ambulancia-sao-paulo">São Paulo</a></li>
-        <li><a href="ambulancia-vinhedo">Vinhedo</a></li>
-        <li><a href="ambulancia-valinhos">Valinhos</a></li>
-        <li><a href="ambulancia-jundiai">Jundiaí</a></li>
-        <li><a href="ambulancia-paulinia">Paulínia</a></li>
-        <li><a href="ambulancia-jaguariuna">Jaguariúna</a></li>
-        <li><a href="ambulancia-indaiatuba">Indaiatuba</a></li>
+        <li><a href="/cidades/ambulancia-campinas">Campinas</a></li><li><a href="/cidades/ambulancia-sao-paulo">São Paulo</a></li>
+        <li><a href="/cidades/ambulancia-vinhedo">Vinhedo</a></li>
+        <li><a href="/cidades/ambulancia-valinhos">Valinhos</a></li>
+        <li><a href="/cidades/ambulancia-jundiai">Jundiaí</a></li>
+        <li><a href="/cidades/ambulancia-paulinia">Paulínia</a></li>
+        <li><a href="/cidades/ambulancia-jaguariuna">Jaguariúna</a></li>
+        <li><a href="/cidades/ambulancia-indaiatuba">Indaiatuba</a></li>
+        <li><a href="/cidades/ambulancia-hortolandia">Hortolândia</a></li>
+        <li><a href="/cidades/ambulancia-sumare">Sumaré</a></li>
+        <li><a href="/cidades/ambulancia-americana">Americana</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ambulância para Eventos</h4>
+      <ul role="list">
+        <li><a href="/eventos/ambulancia-para-shows">Shows e Festivais</a></li>
+        <li><a href="/eventos/ambulancia-para-formaturas">Formaturas</a></li>
+        <li><a href="/eventos/ambulancia-para-casamento">Casamentos</a></li>
+        <li><a href="/eventos/ambulancia-eventos-corporativos">Eventos Corporativos</a></li>
+        <li><a href="/eventos/ambulancia-eventos-esportivos">Eventos Esportivos</a></li>
+        <li><a href="/blog/ambulancia-para-eventos-guia">Guia: Ambulância para Eventos</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1457,21 +1606,22 @@
         <li><a href="#sobre">Nossa Missão</a></li>
         <li><a href="#contato">Trabalhe Conosco</a></li>
         <li><a href="#contato">Seja Parceiro</a></li>
-        <li><a href="privacidade">Privacidade</a></li>
-        <li><a href="lgpd">LGPD</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/institucional/privacidade">Privacidade</a></li>
+        <li><a href="/institucional/lgpd">LGPD</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Life Mais Saúde. Todos os direitos reservados. <span class="footer-reg">Urgência 24h: (19) 99238-5046</span></span>
     <div class="footer-bottom-links">
-      <a href="privacidade">Privacidade</a>
-      <a href="termos">Termos de Uso</a>
-      <a href="lgpd">LGPD</a>
+      <a href="/institucional/privacidade">Privacidade</a>
+      <a href="/institucional/termos">Termos de Uso</a>
+      <a href="/institucional/lgpd">LGPD</a>
     </div>
   </div>
   <div class="footer-dev">
-    Desenvolvido por <a href="https://rmtechbusines.com.br/" target="_blank" rel="noopener" class="footer-dev-logo" aria-label="RM Tech IT Solutions"><span class="footer-dev-rm">RM<span class="footer-dev-tech">Tech</span></span> <span class="footer-dev-business">IT Solutions</span></a>
+    Site desenvolvido por <a href="https://rmtechbusines.com.br/servicos/criacao-de-sites" target="_blank" rel="noopener" class="footer-dev-logo" aria-label="RM Tech — Criação de Sites em Campinas"><span class="footer-dev-rm">RM<span class="footer-dev-tech">Tech</span></span> <span class="footer-dev-business">IT Solutions</span> — Criação de Sites em Campinas</a>
   </div>
 </footer>
 
@@ -1586,14 +1736,41 @@
     });
   })();
 
-  // Form: validação + feedback
+  // Form: validação + envio via FormSubmit AJAX (fetch), com fallback para WhatsApp se o serviço falhar
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
+    const feedback = document.getElementById('form-feedback');
+    const btn2 = document.getElementById('form-btn');
+
+    function formSucesso() {
+      contactForm.style.display = 'none';
+      feedback.textContent = '✓ Solicitação enviada! Entraremos em contato em breve.';
+      feedback.className = 'form-feedback success';
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { lead_source: 'formulario_site', page_path: location.pathname });
+      }
+    }
+
+    function formFalha() {
+      const nome = document.getElementById('nome').value.trim();
+      const tel = document.getElementById('tel').value.trim();
+      const servico = document.getElementById('servico').value;
+      const msg = document.getElementById('msg').value.trim();
+      const texto = 'Olá! Tentei enviar o formulário do site.\nNome: ' + nome + '\nTelefone: ' + tel +
+        (servico ? '\nServiço: ' + servico : '') + (msg ? '\nMensagem: ' + msg : '');
+      feedback.innerHTML = 'Não foi possível enviar agora. ' +
+        '<a href="https://wa.me/5519992385046?text=' + encodeURIComponent(texto) + '" target="_blank" rel="noopener" ' +
+        'style="color:var(--red);font-weight:700;text-decoration:underline;">Clique aqui para enviar pelo WhatsApp</a> — sua mensagem já vai preenchida.';
+      feedback.className = 'form-feedback error';
+      btn2.textContent = 'Enviar Solicitação';
+      btn2.disabled = false;
+      btn2.style.opacity = '';
+    }
+
     contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
       const nome = document.getElementById('nome');
       const tel  = document.getElementById('tel');
-      const feedback = document.getElementById('form-feedback');
-      const btn2 = document.getElementById('form-btn');
       feedback.className = 'form-feedback';
       feedback.textContent = '';
       let valid = true;
@@ -1601,7 +1778,6 @@
       if (!nome.value.trim()) { nome.style.borderColor = '#dc2626'; valid = false; }
       if (!tel.value.trim())  { tel.style.borderColor  = '#dc2626'; valid = false; }
       if (!valid) {
-        e.preventDefault();
         feedback.textContent = 'Por favor, preencha nome e telefone.';
         feedback.className = 'form-feedback error';
         return;
@@ -1609,14 +1785,28 @@
       btn2.textContent = 'Enviando...';
       btn2.disabled = true;
       btn2.style.opacity = '.7';
+
+      const dados = Object.fromEntries(new FormData(contactForm));
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 15000);
+      fetch('https://formsubmit.co/ajax/contato@lifemaissaude.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(dados),
+        signal: ctrl.signal
+      })
+      .then(r => r.json())
+      .then(res => { clearTimeout(timer); if (res.success === true || res.success === 'true') { formSucesso(); } else { formFalha(); } })
+      .catch(() => { clearTimeout(timer); formFalha(); });
     });
-    // Mensagem de sucesso após redirect com ?enviado=1
+    // Mensagem de sucesso após redirect com ?enviado=1 (caminho sem JS: o FormSubmit redireciona pra cá via _next)
     if (window.location.search.includes('enviado=1')) {
-      const feedback = document.getElementById('form-feedback');
-      if (feedback) { feedback.textContent = '✓ Solicitação enviada! Entraremos em contato em breve.'; feedback.className = 'form-feedback success'; }
+      feedback.textContent = '✓ Solicitação enviada! Entraremos em contato em breve.';
+      feedback.className = 'form-feedback success';
       contactForm.style.display = 'none';
     }
   }
 </script>
+<script defer src="/js/lead-tracking.js"></script>
 </body>
 </html>

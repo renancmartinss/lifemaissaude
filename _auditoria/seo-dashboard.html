@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Dashboard SEO — Life Mais Saúde</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0F766E; --teal-dark:#115E59; --teal-light:#14B8A6; --teal-pale:#F0FDFA; --teal-mint:#5EEAD4;
+    --navy:#0D1B2A; --navy-mid:#142433; --navy-soft:#1A2B3C;
+    --bg:#F4F7F7; --card:#FFFFFF; --border:#E2E8F0; --border-soft:#EEF2F4;
+    --text:#0F172A; --muted:#64748B; --faint:#94A3B8;
+    --green:#16A34A; --amber:#F59E0B; --red:#DC2626; --blue:#1565C0;
+    --r-sm:10px; --r-md:16px; --r-lg:22px; --r-xl:28px;
+    --sh-sm:0 1px 2px rgba(13,27,42,.05),0 1px 3px rgba(13,27,42,.06);
+    --sh-md:0 4px 6px -1px rgba(13,27,42,.07),0 2px 4px -2px rgba(13,27,42,.05);
+    --sh-lg:0 14px 30px -10px rgba(13,27,42,.16);
+    --ease:cubic-bezier(.4,0,.2,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:16px;-webkit-text-size-adjust:100%}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:
+     radial-gradient(1200px 600px at 100% -10%,rgba(15,118,110,.07),transparent 60%),
+     radial-gradient(900px 500px at -10% 10%,rgba(20,184,166,.06),transparent 55%),
+     var(--bg);
+     line-height:1.6;min-height:100dvh;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:2rem 1.5rem 4rem}
+  h1,h2,h3,h4,.num{font-family:'Sora',sans-serif}
+
+  /* Header */
+  .top{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+  .brand{display:flex;align-items:center;gap:.85rem}
+  .brand-mark{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--teal),var(--teal-light));
+     display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(15,118,110,.35);flex-shrink:0}
+  .brand-mark svg{width:25px;height:25px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .brand-txt h1{font-size:1.25rem;font-weight:800;letter-spacing:-.01em;line-height:1.1}
+  .brand-txt p{font-size:.82rem;color:var(--muted);font-weight:500}
+  .top-meta{margin-left:auto;display:flex;gap:.5rem;flex-wrap:wrap}
+  .chip{display:inline-flex;align-items:center;gap:.4rem;background:var(--card);border:1px solid var(--border);
+     border-radius:999px;padding:.45rem .9rem;font-size:.8rem;font-weight:600;color:var(--muted);box-shadow:var(--sh-sm)}
+  .chip svg{width:14px;height:14px;stroke:var(--teal);fill:none;stroke-width:2.2;stroke-linecap:round}
+  .chip.live{color:var(--green)} .chip.live .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}70%{box-shadow:0 0 0 7px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+
+  /* Grid */
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.25rem}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:1.5rem}
+  .col-4{grid-column:span 4} .col-5{grid-column:span 5} .col-7{grid-column:span 7}
+  .col-6{grid-column:span 6} .col-8{grid-column:span 8} .col-12{grid-column:span 12}
+  .card-h{display:flex;align-items:center;gap:.6rem;margin-bottom:1.25rem}
+  .card-h h3{font-size:.95rem;font-weight:700;letter-spacing:.01em}
+  .card-h .ico{width:30px;height:30px;border-radius:9px;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .card-h .ico svg{width:16px;height:16px;stroke:var(--teal);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .card-h .tag{margin-left:auto;font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em}
+
+  /* Score hero */
+  .score-card{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-soft) 100%);color:#fff;border:none;
+     position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .score-card::before{content:'';position:absolute;inset:0;
+     background:radial-gradient(420px 280px at 50% -10%,rgba(94,234,212,.18),transparent 70%);pointer-events:none}
+  .gauge{position:relative;width:220px;height:220px;margin:.5rem 0 .25rem}
+  .gauge svg{transform:rotate(-90deg)}
+  .gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .gauge-center .num{font-size:3.6rem;font-weight:800;line-height:1;letter-spacing:-.02em}
+  .gauge-center .num span{font-size:1.4rem;color:var(--teal-mint);font-weight:700}
+  .gauge-center .lbl{font-size:.78rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.12em;margin-top:.35rem;font-weight:600}
+  .verdict{display:inline-flex;align-items:center;gap:.5rem;background:rgba(94,234,212,.14);border:1px solid rgba(94,234,212,.3);
+     color:var(--teal-mint);border-radius:999px;padding:.5rem 1.1rem;font-size:.85rem;font-weight:700;margin-top:.75rem}
+  .verdict svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .score-note{font-size:.84rem;color:rgba(255,255,255,.72);max-width:34ch;margin-top:1rem;line-height:1.55}
+
+  /* Category bars */
+  .cat{display:flex;flex-direction:column;gap:1.05rem}
+  .cat-row .cat-top{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.4rem}
+  .cat-row .cat-name{font-size:.88rem;font-weight:600}
+  .cat-row .cat-w{font-size:.72rem;color:var(--faint);font-weight:600}
+  .cat-row .cat-val{margin-left:auto;font-family:'Sora';font-size:.95rem;font-weight:700}
+  .track{height:9px;border-radius:999px;background:var(--border-soft);overflow:hidden}
+  .fill{height:100%;border-radius:999px;width:0;transition:width 1.1s var(--ease)}
+  .fill.g{background:linear-gradient(90deg,var(--teal),var(--teal-light))}
+  .fill.a{background:linear-gradient(90deg,#D97706,var(--amber))}
+
+  /* Stat tiles */
+  .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;height:100%}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:var(--r-md);padding:1.15rem;box-shadow:var(--sh-sm);
+     display:flex;flex-direction:column;gap:.15rem;position:relative;overflow:hidden}
+  .stat .sico{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:.45rem}
+  .stat .sico svg{width:17px;height:17px;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .stat .v{font-family:'Sora';font-size:1.7rem;font-weight:800;line-height:1;letter-spacing:-.01em}
+  .stat .k{font-size:.78rem;color:var(--muted);font-weight:500;line-height:1.35}
+  .si-teal{background:var(--teal-pale)} .si-teal svg{stroke:var(--teal)}
+  .si-green{background:#DCFCE7} .si-green svg{stroke:var(--green)}
+  .si-amber{background:#FEF3C7} .si-amber svg{stroke:#D97706}
+  .si-blue{background:#DBEAFE} .si-blue svg{stroke:var(--blue)}
+
+  /* Lists strengths / opps */
+  .li{display:flex;gap:.7rem;padding:.7rem 0;border-bottom:1px solid var(--border-soft)}
+  .li:last-child{border-bottom:none;padding-bottom:0}
+  .li:first-child{padding-top:0}
+  .li .bullet{width:22px;height:22px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .li .bullet svg{width:13px;height:13px;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .b-ok{background:#DCFCE7} .b-ok svg{stroke:var(--green)}
+  .b-up{background:var(--teal-pale)} .b-up svg{stroke:var(--teal)}
+  .li .li-txt{font-size:.86rem;line-height:1.5}
+  .li .li-txt strong{font-weight:700}
+
+  /* Action plan */
+  .actions{display:flex;flex-direction:column;gap:.85rem}
+  .act{border:1px solid var(--border);border-radius:var(--r-md);padding:1.1rem 1.2rem;display:flex;gap:1rem;align-items:flex-start;
+     transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease);background:var(--card)}
+  .act:hover{transform:translateY(-2px);box-shadow:var(--sh-md);border-color:#CBD5E1}
+  .act .sev{flex-shrink:0;width:54px;text-align:center}
+  .sev .badge{display:inline-block;font-size:.64rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+     padding:.28rem .5rem;border-radius:7px;width:100%}
+  .sev .pr{font-size:.66rem;color:var(--faint);font-weight:700;margin-top:.35rem;display:block}
+  .sv-crit .badge{background:#FEE2E2;color:#B91C1C} .sv-crit{border-left:3px solid var(--red)}
+  .sv-high .badge{background:#FFEDD5;color:#C2410C} .sv-high{border-left:3px solid var(--amber)}
+  .sv-med .badge{background:#FEF9C3;color:#A16207} .sv-med{border-left:3px solid #EAB308}
+  .sv-low .badge{background:#E2E8F0;color:#475569} .sv-low{border-left:3px solid #94A3B8}
+  .act-body{flex:1;min-width:0}
+  .act-body h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem;letter-spacing:-.01em}
+  .act-body p{font-size:.84rem;color:var(--muted);line-height:1.55}
+  .act-body .meta{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem}
+  .mtag{font-size:.71rem;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--border);
+     border-radius:7px;padding:.25rem .55rem;display:inline-flex;align-items:center;gap:.32rem}
+  .mtag svg{width:12px;height:12px;stroke:var(--teal);fill:none;stroke-width:2.3;stroke-linecap:round}
+
+  /* Coverage / inventory */
+  .inv{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+  .inv-i{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem;text-align:center}
+  .inv-i .iv{font-family:'Sora';font-size:1.5rem;font-weight:800;color:var(--teal)}
+  .inv-i .ik{font-size:.74rem;color:var(--muted);font-weight:500;margin-top:.1rem}
+
+  /* Schema pills */
+  .pills{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill{font-size:.78rem;font-weight:600;padding:.4rem .8rem;border-radius:999px;background:var(--teal-pale);
+     color:var(--teal-dark);border:1px solid #CCFBF1;display:inline-flex;align-items:center;gap:.4rem}
+  .pill svg{width:13px;height:13px;stroke:var(--teal);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+  /* Footer */
+  .foot{margin-top:2.5rem;text-align:center;font-size:.78rem;color:var(--faint);line-height:1.7}
+  .foot strong{color:var(--muted)}
+  .foot a{color:var(--teal);font-weight:600;text-decoration:none}
+
+  .section-label{font-family:'Sora';font-size:1.05rem;font-weight:700;margin:2.25rem 0 1rem;display:flex;align-items:center;gap:.6rem}
+  .section-label svg{width:18px;height:18px;stroke:var(--teal);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* Responsive */
+  @media (max-width:1024px){
+    .col-4,.col-5,.col-7,.col-8{grid-column:span 6}
+  }
+  @media (max-width:760px){
+    .wrap{padding:1.25rem 1rem 3rem}
+    .grid{gap:1rem}
+    .col-4,.col-5,.col-6,.col-7,.col-8,.col-12{grid-column:span 12}
+    .top-meta{margin-left:0;width:100%}
+    .inv{grid-template-columns:repeat(3,1fr)}
+    .gauge{width:190px;height:190px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .fill{transition:none!important}.dot{animation:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Header -->
+  <header class="top">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div class="brand-txt">
+        <h1>Dashboard SEO — Life Mais Saúde</h1>
+        <p>Ambulância &amp; cobertura de eventos · Campinas e Região · lifemaissaude.com</p>
+      </div>
+    </div>
+    <div class="top-meta">
+      <span class="chip live"><span class="dot"></span>Site no ar</span>
+      <span class="chip"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>24/06/2026</span>
+      <span class="chip"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Serviço Local · YMYL</span>
+    </div>
+  </header>
+
+  <!-- Row 1: Score + Categories + Stats -->
+  <div class="grid">
+
+    <!-- Score gauge -->
+    <div class="card score-card col-4">
+      <div class="gauge">
+        <svg width="220" height="220" viewBox="0 0 220 220">
+          <circle cx="110" cy="110" r="92" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="16"/>
+          <circle id="ring" cx="110" cy="110" r="92" fill="none" stroke="url(#grad)" stroke-width="16"
+                  stroke-linecap="round" stroke-dasharray="578.05" stroke-dashoffset="578.05"/>
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#14B8A6"/><stop offset="100%" stop-color="#5EEAD4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="gauge-center">
+          <div class="num" id="scoreNum">0<span>/100</span></div>
+          <div class="lbl">Health Score</div>
+        </div>
+      </div>
+      <div class="verdict"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Muito bom</div>
+      <p class="score-note">Uma das implementações de SEO local mais sólidas do setor. O salto seguinte está em <strong style="color:#fff">ativos externos</strong>, não no código.</p>
+    </div>
+
+    <!-- Category bars -->
+    <div class="card col-5">
+      <div class="card-h">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div>
+        <h3>Notas por categoria</h3>
+        <span class="tag">peso na nota</span>
+      </div>
+      <div class="cat" id="catList">
+        <!-- rows injected -->
+      </div>
+    </div>
+
+    <!-- Stat tiles -->
+    <div class="col-3" style="grid-column:span 3">
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="sico si-teal"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
+          <div class="v">35</div><div class="k">páginas indexáveis</div>
+        </div>
+        <div class="stat">
+          <div class="sico si-green"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg></div>
+          <div class="v">6</div><div class="k">tipos de schema válidos</div>
+        </div>
+        <div class="stat">
+          <div class="sico si-blue"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <div class="v">100%</div><div class="k">imagens com alt + dimensão</div>
+        </div>
+        <div class="stat">
+          <div class="sico si-amber"><svg viewBox="0 0 24 24"><path d="M10.3 3.1a2 2 0 0 1 3.4 0l8 13.9A2 2 0 0 1 20 20H4a2 2 0 0 1-1.7-3z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+          <div class="v">5</div><div class="k">ações prioritárias</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Strengths / Opportunities / Inventory -->
+  <div class="grid" style="margin-top:1.25rem">
+
+    <div class="card col-4">
+      <div class="card-h">
+        <div class="ico" style="background:#DCFCE7"><svg viewBox="0 0 24 24" style="stroke:var(--green)"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Forças (não mexer)</h3>
+      </div>
+      <div>
+        <div class="li"><span class="bullet b-ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="li-txt">Schema JSON-LD <strong>real e completo</strong>: EmergencyService, MedicalBusiness, WebSite, WebPage, BreadcrumbList, FAQPage.</span></div>
+        <div class="li"><span class="bullet b-ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="li-txt">E-E-A-T de saúde exemplar: CRM-SP, COREN, CNPJ/CNES, alvará e DEA — críticos para <strong>YMYL</strong>.</span></div>
+        <div class="li"><span class="bullet b-ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="li-txt">Imagens impecáveis: <strong>alt + width/height</strong> (anti-CLS), lazy, hero com fetchpriority.</span></div>
+        <div class="li"><span class="bullet b-ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="li-txt">FAQPage mantido — healthcare é <strong>exceção</strong> que ainda ganha rich result de FAQ.</span></div>
+        <div class="li"><span class="bullet b-ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="li-txt">Pronto para IA: <strong>llms.txt</strong>, robots libera GPTBot/Perplexity, GA4 + GSC ativos.</span></div>
+      </div>
+    </div>
+
+    <div class="card col-4">
+      <div class="card-h">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+        <h3>Oportunidades</h3>
+      </div>
+      <div>
+        <div class="li"><span class="bullet b-up"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7-7 7 7"/></svg></span><span class="li-txt"><strong>Google Meu Negócio</strong> — maior canal para "ambulância Campinas" ainda não existe.</span></div>
+        <div class="li"><span class="bullet b-up"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7-7 7 7"/></svg></span><span class="li-txt">Depoimentos <strong>fictícios</strong> — risco de confiança em site de saúde.</span></div>
+        <div class="li"><span class="bullet b-up"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7-7 7 7"/></svg></span><span class="li-txt">Silo de links interno <strong>incompleto</strong> — só o rodapé da home está completo.</span></div>
+        <div class="li"><span class="bullet b-up"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7-7 7 7"/></svg></span><span class="li-txt">Páginas de <strong>nicho de evento</strong> só alcançáveis pelo sitemap (quase órfãs).</span></div>
+        <div class="li"><span class="bullet b-up"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7-7 7 7"/></svg></span><span class="li-txt">Core Web Vitals <strong>não medidos em campo</strong> (cota PageSpeed esgotada).</span></div>
+      </div>
+    </div>
+
+    <div class="card col-4">
+      <div class="card-h">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Inventário do site</h3>
+      </div>
+      <div class="inv">
+        <div class="inv-i"><div class="iv">9</div><div class="ik">serviços</div></div>
+        <div class="inv-i"><div class="iv">11</div><div class="ik">cidades</div></div>
+        <div class="inv-i"><div class="iv">5</div><div class="ik">eventos</div></div>
+        <div class="inv-i"><div class="iv">5</div><div class="ik">blog</div></div>
+        <div class="inv-i"><div class="iv">3</div><div class="ik">institucional</div></div>
+        <div class="inv-i"><div class="iv">1</div><div class="ik">home</div></div>
+      </div>
+      <div class="card-h" style="margin:1.4rem 0 .9rem">
+        <h3 style="font-size:.86rem;color:var(--muted)">Schema detectado</h3>
+      </div>
+      <div class="pills">
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>EmergencyService</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>MedicalBusiness</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>FAQPage</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>WebSite</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>BreadcrumbList</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action plan -->
+  <div class="section-label">
+    <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    Plano de ação priorizado
+  </div>
+
+  <div class="actions">
+    <div class="act sv-crit">
+      <div class="sev"><span class="badge">Crítico</span><span class="pr">#1</span></div>
+      <div class="act-body">
+        <h4>Criar e otimizar o Google Meu Negócio</h4>
+        <p>Para emergência médica local, o Map Pack concentra a maioria dos cliques de alta intenção. O site já está pronto para alimentá-lo (NAP consistente, GeoCoordinates, categoria certa) — sem o perfil, perde-se o bloco do mapa inteiro.</p>
+        <div class="meta"><span class="mtag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Maior alavanca</span><span class="mtag"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Acompanhar: ligações &amp; rotas no GBP</span></div>
+      </div>
+    </div>
+
+    <div class="act sv-high">
+      <div class="sev"><span class="badge">Alto</span><span class="pr">#2</span></div>
+      <div class="act-body">
+        <h4>Substituir depoimentos placeholder por reais</h4>
+        <p>Os 3 depoimentos atuais são fictícios — passivo de confiança em site YMYL de saúde. Ponto positivo: não estão marcados como Review no schema (sem violação). Trocar por avaliações reais e atribuíveis e só então adicionar AggregateRating.</p>
+        <div class="meta"><span class="mtag"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>Confiança / E-E-A-T</span><span class="mtag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Prazo: 1 semana</span></div>
+      </div>
+    </div>
+
+    <div class="act sv-med">
+      <div class="sev"><span class="badge">Médio</span><span class="pr">#3</span></div>
+      <div class="act-body">
+        <h4>Completar o silo de links interno em todas as páginas</h4>
+        <p>Hoje só o rodapé da home tem o silo completo (9 serviços + 11 cidades). Replicar o mesmo rodapé em serviços, cidades, eventos e blog distribui autoridade de forma consistente.</p>
+        <div class="meta"><span class="mtag"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Interligação</span><span class="mtag"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Acompanhar: links internos no GSC</span></div>
+      </div>
+    </div>
+
+    <div class="act sv-med">
+      <div class="sev"><span class="badge">Médio</span><span class="pr">#4</span></div>
+      <div class="act-body">
+        <h4>Tornar páginas de nicho de evento alcançáveis</h4>
+        <p>Shows, formaturas, casamento, corporativos e esportivos só aparecem no sitemap. Adicionar uma seção "Cobertura por tipo de evento" na home e na página de cobertura de eventos, com links cruzados entre elas.</p>
+        <div class="meta"><span class="mtag"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Arquitetura</span><span class="mtag"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>Evitar "Descoberta — não indexada"</span></div>
+      </div>
+    </div>
+
+    <div class="act sv-low">
+      <div class="sev"><span class="badge">Baixo</span><span class="pr">#5</span></div>
+      <div class="act-body">
+        <h4>Ajustes finos &amp; verificação de campo</h4>
+        <p>Confirmar Core Web Vitals no pagespeed.web.dev (LCP do hero 1200×1600). Remover <code>meta keywords</code>; adicionar <code>twitter:image</code>; expandir <code>sameAs</code> (GBP/Facebook); atualizar <code>lastmod</code> do sitemap a cada deploy.</p>
+        <div class="meta"><span class="mtag"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg>Performance</span><span class="mtag"><svg viewBox="0 0 24 24"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>Backlog</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="foot">
+    <strong>Deploy manual (FTP/cPanel)</strong> — páginas novas e llms.txt confirmados no ar nesta auditoria. Revalide a cada publicação.<br>
+    Dashboard gerado por auditoria SEO · <a href="https://lifemaissaude.com/">lifemaissaude.com</a> · arquivo local em <strong>_auditoria/</strong> (não vai para o servidor)
+  </p>
+
+</div>
+
+<script>
+  const cats = [
+    {n:'Qualidade de Conteúdo', w:23, v:82, c:'g'},
+    {n:'SEO Técnico',           w:22, v:92, c:'g'},
+    {n:'On-Page',               w:20, v:90, c:'g'},
+    {n:'Schema / Estruturado',  w:10, v:95, c:'g'},
+    {n:'Performance (CWV)',     w:10, v:80, c:'a'},
+    {n:'Prontidão IA (GEO)',    w:10, v:92, c:'g'},
+    {n:'Imagens',               w:5,  v:95, c:'g'}
+  ];
+  const list = document.getElementById('catList');
+  cats.forEach(c=>{
+    const row=document.createElement('div');
+    row.className='cat-row';
+    row.innerHTML=`<div class="cat-top">
+        <span class="cat-name">${c.n}</span>
+        <span class="cat-w">· ${c.w}%</span>
+        <span class="cat-val">${c.v}</span>
+      </div>
+      <div class="track"><div class="fill ${c.c}" data-v="${c.v}"></div></div>`;
+    list.appendChild(row);
+  });
+
+  // Animate on load
+  function animate(){
+    // gauge ring
+    const score=88, R=92, C=2*Math.PI*R;
+    const ring=document.getElementById('ring');
+    ring.style.transition='stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1)';
+    requestAnimationFrame(()=>{ ring.style.strokeDashoffset = C*(1-score/100); });
+    // number count up
+    const el=document.getElementById('scoreNum'); let n=0;
+    const step=()=>{ n+=2; if(n>=score)n=score; el.innerHTML=n+'<span>/100</span>'; if(n<score)requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+    // bars
+    document.querySelectorAll('.fill').forEach((f,i)=>{
+      setTimeout(()=>{ f.style.width=f.dataset.v+'%'; }, 150+i*90);
+    });
+  }
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const score=88,R=92,C=2*Math.PI*R;
+    document.getElementById('ring').style.strokeDashoffset=C*(1-score/100);
+    document.getElementById('scoreNum').innerHTML=score+'<span>/100</span>';
+    document.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.v+'%');
+  } else {
+    window.addEventListener('load',animate);
+  }
+</script>
+</body>
+</html>
